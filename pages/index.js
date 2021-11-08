@@ -12,7 +12,7 @@ import WhyTrust from '../components/WhyTrust'
 
 export default function Home() {
   return (
-    <div className="bg-gray-50 font-Sora">
+    <div className="bg-gray-50 h-screen overflow-y-scroll font-Sora">
      <Head>
         <title>Smartdaftar</title>
         <link rel="Logo Icon" type="image/png" href="/favicon.png" />
