@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Sora:wght@400;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .trustUsIcons {
+        @apply h-7 hover:scale-125 cursor-pointer transition-all duration-150 ease-out
+    }
+    .glassNavbar {
+        @apply z-50 text-yellow-50 bg-clip-padding backdrop-blur-sm gap-y-4
+    }
+    .navDropdown {
+        @apply lg:hidden absolute top-14 flex flex-col justify-center items-center w-full
+    }
+}
