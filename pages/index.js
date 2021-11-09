@@ -12,10 +12,11 @@ import WhyTrust from '../components/WhyTrust'
 
 export default function Home() {
   return (
-    <div className="bg-gray-50 h-screen overflow-y-scroll font-Sora">
+    <div className="bg-gray-50 font-Sora">
      <Head>
         <title>Smartdaftar</title>
         <link rel="Logo Icon" type="image/png" href="/favicon.png" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
         <meta name="title" property="og:title" content="Coworking Space for Rent | Office Space for Rent - Smartdaftar" />
         <meta name="Description" content="Smartdaftar empowers you to choose from a vast variety of office services. Flexi 
           seat, Day Pass, Private Cabins, Manager/Executive Cabin, Meeting Rooms, Conference Room, Board Room, Training Room, Virtual Office PAN India." />

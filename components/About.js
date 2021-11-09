@@ -6,7 +6,7 @@ function About() {
                 <div className="flex flex-col justify-evenly gap-y-4">
                     <p className="font-Roboto tracking-wide">Smartdaftar is the premium coworking aggregator & smartest tech-enabled platform for today’s workforce to search, sort and book a flexible & managed workspace solution.</p>
                     <p className="font-Roboto tracking-wide">We offer enterprise managed workspaces that are tech-enabled, convenient, and designed keeping in mind your brand's needs. Our customised offices foster the perfect work environment to scale your business.</p>
-                    <p className="font-Roboto tracking-wide">Our impaneled office space provider’s network of fully serviced & managed offices, empowers you to choose from a vast variety of office services range - Flexi seat, Day Pass, Private Cabins, Manager/Executive Cabin, Meeting Rooms, Conference Room, Board Room, Training Room, Virtual Office PAN India.</p>
+                    <p className="font-Roboto tracking-wide hidden md:flex">Our impaneled office space provider’s network of fully serviced & managed offices, empowers you to choose from a vast variety of office services range - Flexi seat, Day Pass, Private Cabins, Manager/Executive Cabin, Meeting Rooms, Conference Room, Board Room, Training Room, Virtual Office PAN India.</p>
                     <div className="p-4 grid grid-cols-2 gap-4">
                         <div className="bg-gray-100">
                             <h1 className="text-3xl text-gray-700 font-extrabold">1.</h1>

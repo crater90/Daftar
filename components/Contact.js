@@ -19,14 +19,14 @@ function Contact() {
         <section id="Contact us" className="mt-10 w-11/12 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto">
             <h1 className="text-3xl text-gray-700 font-extrabold">Contact Us</h1>
             <div className="grid mt-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                <div className="rounded-t-md md:rounded-l-md pl-4 gap-y-5 py-4 md:p-4 bg-gray-700 text-yellow-50 flex flex-col justify-center items-start">
+                <div className="rounded-t-md md:rounded-l-md px-4 gap-y-5 py-4 md:p-4 bg-gray-700 text-yellow-50 flex flex-col justify-center items-start">
                     <h1 className="text-3xl font-bold pb-5">We'd love to hear from you...</h1>
-                    <span className="flex"><PhoneIcon className="h-7 pr-4"/>7983069435</span>
-                    <span className="flex"><MailIcon className="h-7 pr-4"/>Info@smartdaftar.com</span>
+                    <span className="flex"><PhoneIcon className="h-7 pr-4"/><a href="tel:7983069435">7983069435</a></span>
+                    <span className="flex"><MailIcon className="h-7 pr-4"/><a href="mailto:Info@smartdaftar.com">Info@smartdaftar.com</a></span>
                     {/* <span className="flex"><ChatIcon className="h-7 pr-4"/>2-A/3, Kundan Mansion, Asaf Ali Rd,<br/> Delhi 110002</span> */}
                 </div>
                 <div className="bg-gray-200 lg:col-span-2 rounded-b-md md:rounded-r-md">
-                    <form className="px-10 py-5" method="post" onSubmit={handleSubmit}>
+                    <form className="px-3 md:px-10 py-5" method="post" onSubmit={handleSubmit}>
                         <div className="grid grid-cols-2 gap-y-4 gap-x-8">
                             <div className="flex flex-col ">
                                 <label className="font-bold text-gray-500 pb-2" htmlFor="name">NAME</label>
