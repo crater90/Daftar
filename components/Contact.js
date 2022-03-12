@@ -26,7 +26,7 @@ function Contact() {
                     {/* <span className="flex"><ChatIcon className="h-7 pr-4"/>2-A/3, Kundan Mansion, Asaf Ali Rd,<br/> Delhi 110002</span> */}
                 </div>
                 <div className="bg-gray-200 lg:col-span-2 rounded-b-md md:rounded-r-md">
-                    <form className="px-3 md:px-10 py-5" method="post" onSubmit={handleSubmit}>
+                    <form className="px-3 md:px-10 py-5" action="https://formsubmit.co/kamranmohd89@gmail.com" method="post" >
                         <div className="grid grid-cols-2 gap-y-4 gap-x-8">
                             <div className="flex flex-col ">
                                 <label className="font-bold text-gray-500 pb-2" htmlFor="name">NAME</label>
@@ -51,6 +51,8 @@ function Contact() {
                         </div>
                         <div className="flex items-center justify-end pt-4">
                             <button className="border-2 border-gray-700 rounded-md py-2 px-4 font-semibold text-gray-700 hover:text-yellow-50 hover:bg-gray-700" type="submit">Send Message</button>
+                            <input type="hidden" name="_next" value="https://smartdaftar.com"></input>
+                            <input type="hidden" name="_captcha" value="false"></input>
                         </div>
                     </form>
                 </div>
