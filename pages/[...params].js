@@ -1,17 +1,24 @@
-import { useRouter } from "next/router";
+import CityPageForm from "../components/CityPageForm";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import Propdetails from "../components/Propdetails";
 
-
-function PropertyPage() {
-    const router = useRouter();
-    const { params } = router.query;
-    if (!params) return null;
-    console.log(router);
+function propdetails() {
     return (
-        <div>
-            {params[0] && <h1>city : {params[0]}</h1>}
-            {params[1] && <h1>property : {params[1]}</h1>}
-        </div>
+        <>
+            <div className="bg-gray-50 font-Sora h-screen overflow-y-scroll">
+            <Header />
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 md:max-w-3xl lg:max-w-6xl mx-auto">
+                <div className="lg:col-span-3">
+                    <Propdetails />
+                </div>
+                <div className="hidden lg:inline-grid lg:col-span-2">
+                    <CityPageForm />
+                </div>
+            </div>
+            <Footer />
+            </div>
+        </>
     )
 }
-
-export default PropertyPage
+export default propdetails
