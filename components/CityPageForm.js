@@ -4,7 +4,7 @@ function CityPageForm({ city }) {
     return (
         <div className="">
             <div className=" sticky top-20 mt-4 mr-4 py-4 px-6 bg-white font-Sora text-base border border-gray-200 rounded-md drop-shadow-md">
-                <h1 className="text-xl font-semibold">Interested in Office spaces in Lucknow</h1>
+                <h1 className="text-xl font-semibold capitalize">Interested in Office spaces in {city}</h1>
                 <p>Leave your details below</p>
                 <form className="" method="post">
                     <div className="flex flex-col mt-2">
