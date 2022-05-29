@@ -1,9 +1,37 @@
+import { useState, useEffect } from "react";
+
 import { MailIcon, PhoneIcon } from "@heroicons/react/solid"
 
-function CityPageForm({ city }) {
+function CityPageForm({ triggerAnimate, city }) {
+    const initialState = {
+        name: "",
+        email: "",
+        phone: "",
+        location: "",
+        query: ""
+    };
+
+    const [form, setForm] = useState(initialState);
+    const [shake, setShake] = useState(false)
+
+    useEffect(() => {
+        triggerAnimate.current = animate
+    }, [])
+
+    const animate = () => {
+        setShake(true);
+        setTimeout(() => setShake(false), 1000);
+    }
+
+    const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setForm({ ...form, [name]: value })
+    }
+
     return (
         <div className="">
-            <div className=" sticky top-20 mt-4 mr-4 py-4 px-6 bg-white font-Sora text-base border border-gray-200 rounded-md drop-shadow-md">
+            <div className={`sticky top-20 py-4 px-6 bg-white font-Sora text-base border border-gray-200 rounded-md drop-shadow-md ${shake ? 'animate-shakeLeftRight' : ''}`}>
                 <h1 className="text-xl font-semibold capitalize">Interested in Office spaces in {city}</h1>
                 <p>Leave your details below</p>
                 <form className="" method="post">

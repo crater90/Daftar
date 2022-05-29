@@ -1,13 +1,16 @@
-import { PhoneIcon, MenuIcon, XIcon } from "@heroicons/react/outline"
 import { useState, useEffect } from "react"
+
+import { PhoneIcon, MenuIcon, XIcon, SearchIcon } from "@heroicons/react/outline"
+
 import { Link } from "react-scroll"
 import { animateScroll as scroll } from "react-scroll"
-import { SearchIcon } from "@heroicons/react/outline"
 
 function Header({ homePage }) {
+
     const [navbar, setNavbar] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
     const [click, setClick] = useState(false);
+
     const handleClick = () => setClick(!click);
 
     useEffect(() => {
@@ -27,7 +30,6 @@ function Header({ homePage }) {
             window.removeEventListener('scroll', changeBg);
         }
     }, []);
-    console.log(homePage);
     return (
         <>
             <div className={navbar ? "bg-gray-700 bg-opacity-60 sticky top-0 glassNavbar" : "bg-transparent sticky top-0 glassNavbar"}>
@@ -47,9 +49,9 @@ function Header({ homePage }) {
                         !homePage &&
                         <div className="relative">
                             <div className="absolute inset-y-0 right-0 pr-2 md:pr-4 flex items-center justify-end pointer-events-none">
-                                <SearchIcon className="h-5 w-5" />
+                                <SearchIcon className="h-5 w-5 text-gray-900" />
                             </div>
-                            <input onChange={(e) => setSearchQuery(e.target.value.toLowerCase())} className="focus:outline-none w-80 px-2 lg:pl-4 lg:pr-10 rounded-md opacity-70 py-2 md:py-3 text-gray-900" type="text" placeholder="Search" />
+                            <input onChange={(e) => setSearchQuery(e.target.value.toLowerCase())} className="focus:outline-none w-80 px-2 lg:pl-4 lg:pr-10 rounded-md opacity-70 py-2 text-gray-900" type="text" placeholder="Search" />
                         </div>
                     }
 

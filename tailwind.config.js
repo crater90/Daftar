@@ -1,7 +1,7 @@
 module.exports = {
   mode: 'jit',
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  //purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     backdropFilter: {
       'none': 'none',
@@ -9,15 +9,31 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-       Sora: ['Sora', 'sans-serif'],
-       Roboto: ['Roboto', 'sans-serif'],
+        Sora: ['Sora', 'sans-serif'],
+        Roboto: ['Roboto', 'sans-serif'],
       },
+      keyframes: {
+        shakeLeftRight: {
+          '10%, 90%': {
+            transform: 'translateX(-1px)'
+          },
+          '20%, 80%': {
+            transform: 'translateX(2px)'
+          },
+          '30%, 50%, 70%': {
+            transform: 'translateX(-4px)'
+          },
+          '40%, 60%': {
+            transform: 'translateX(4px)'
+          }
+        }
+      },
+      animation: {
+        shakeLeftRight: 'shakeLeftRight 1s ease-in-out infinite'
+      }
     },
-  variants: {
-    extend: {},
-  },
-  plugins: [
-    require('tailwindcss-filters'),
-  ],
+    plugins: [
+      require('tailwindcss-filters'),
+    ],
   }
 }
