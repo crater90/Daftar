@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 
 import Header from "../components/Header";
 import Property from "../components/Property";
@@ -15,57 +15,11 @@ import { startCase } from "lodash";
 import { useRouter } from "next/router";
 
 function CityPage({ refinedData }) {
-    console.log(refinedData);
+
     const router = useRouter();
     const { cities } = router.query;
 
-    const [searchableCity, setSearchableCity] = useState(null);
     const triggerAnimate = useRef(null)
-
-    // useEffect(() => {
-    //     if (!router.isReady) return;
-    //     setSearchableCity(cities);
-    //     // codes using router.query
-    //     console.log(searchableCity);
-
-    // }, [router.isReady]);
-
-    // useEffect(
-    //     () =>
-    //         onSnapshot(
-    //             query(collection(db, "property"), where("address.city", "==", searchableCity)),
-    //             (snapshot) => {
-    //                 setProperties(snapshot.docs.map((doc) => {
-    //                     return {
-    //                         id: doc.id,
-    //                         data: doc.data(),
-    //                     }
-    //                 }));
-    //             }
-    //         ),
-    //     [db]
-    // );
-
-
-    // useEffect(() => {
-    //     if (router.isReady) {
-    //         const q = query(collection(db, "property"), where("address.city", "==", startCase(cities)));
-    //         const fetchData = onSnapshot(q, (snapshot) => {
-    //             setProperties(snapshot.docs.map((doc) => {
-    //                 return {
-    //                     id: doc.id,
-    //                     data: doc.data(),
-    //                 }
-    //             }))
-
-    //         })
-    //         return () => {
-    //             fetchData()
-    //         }
-    //     }
-
-    // }, [router.isReady])
-    // console.log(properties);
 
     return (
         <div>
@@ -90,8 +44,6 @@ function CityPage({ refinedData }) {
                     </div>
 
                     <div className="lg:col-span-3">
-                        {/* <Breadcrumbs containerClassName='flex pt-2' listClassName='flex gap-x-2' inactiveItemClassName='inline-block after:chevron-right' activeItemClassName='' rootLabel="Home" />
-                        <h1 className="capitalize text-3xl font-bold text-gray-500">Coworking spaces in {cities}</h1> */}
                         <div className="flex flex-col divide-y gap-4">
                             {
                                 refinedData.map((prop) => {
@@ -99,7 +51,6 @@ function CityPage({ refinedData }) {
                                 })
                             }
                         </div>
-
                     </div>
                     <div className="hidden px-5 lg:inline-grid lg:col-span-2">
                         <CityPageForm city={cities} triggerAnimate={triggerAnimate} />

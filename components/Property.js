@@ -9,8 +9,10 @@ import Link from "next/link";
 
 import { camelCase } from 'lodash';
 
+import { Jelly } from '@uiball/loaders'
+
 function Property({ data, id }) {
-    console.log(data);
+
     return (
         <div>
             <div className="flex mt-4">
@@ -19,7 +21,12 @@ function Property({ data, id }) {
 
                         {data.photos.map((photo) => {
                             return (
-                                <SwiperSlide><img className="object-cover h-60 w-80 rounded-lg" src={photo} /></SwiperSlide>
+                                photo ? (
+                                    <SwiperSlide> <img className="object-cover h-60 w-80 rounded-lg" src={photo} /></SwiperSlide>
+                                ) : (
+                                    <Jelly size={50} color='black' speed={0.9} />
+                                )
+
                             )
                         })}
 
@@ -49,7 +56,7 @@ function Property({ data, id }) {
                 </Link>
             </div>
 
-        </div>
+        </div >
     )
 }
 

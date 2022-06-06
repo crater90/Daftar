@@ -1,7 +1,11 @@
-import { PhoneIcon, MailIcon } from "@heroicons/react/outline"
 import { useState } from "react"
+
+import { PhoneIcon, MailIcon } from "@heroicons/react/outline"
+
 import { db } from "../firebase"
 import { addDoc, collection } from "firebase/firestore"
+
+import * as Yup from 'yup';
 import { Formik, Form, Field } from 'formik'
 
 function Contact() {
@@ -16,29 +20,11 @@ function Contact() {
 
     const [loading, setLoading] = useState(false);
 
-    const [form, setForm] = useState(initialState);
-
-    const handleChange = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        setForm({ ...form, [name]: value })
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const docRef = await addDoc(collection(db, "leads"), form);
-        setLoading(true);
-        const timeId = setTimeout(() => {
-            // After 3 seconds set the show value to false
-            setForm({ ...initialState });
-            e.target.reset();
-            setLoading(false);
-        }, 3000)
-
-        return () => {
-            clearTimeout(timeId)
-        }
-    }
+    const submitSchema = Yup.object().shape({
+        name: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('* This field is required'),
+        email: Yup.string().email('Invalid email address').required('* This field is required'),
+        phone: Yup.string().length(10, 'Invalid number').required('* This field is required'),
+    });
 
     return (
         <section id="Contact us" className="mt-10 w-11/12 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto">
@@ -51,7 +37,7 @@ function Contact() {
                     {/* <span className="flex"><ChatIcon className="h-7 pr-4"/>2-A/3, Kundan Mansion, Asaf Ali Rd,<br/> Delhi 110002</span> */}
                 </div>
                 <div className="bg-gray-200 lg:col-span-2 rounded-b-md md:rounded-r-md">
-                    <Formik initialValues={initialState} onSubmit={async (values, { resetForm }) => {
+                    <Formik initialValues={initialState} validationSchema={submitSchema} onSubmit={async (values, { resetForm }) => {
                         const docRef = await addDoc(collection(db, "leads"), values);
                         setLoading(true);
                         const timeId = setTimeout(() => {
@@ -64,20 +50,29 @@ function Contact() {
                             clearTimeout(timeId)
                         }
                     }}>
-                        {({ values }) => (
+                        {({ values, errors, touched }) => (
                             <Form className="px-3 md:px-10 py-5">
                                 <div className="grid grid-cols-2 gap-y-4 gap-x-8">
                                     <div className="flex flex-col ">
                                         <label className="font-bold text-gray-500 pb-2" htmlFor="name">NAME</label>
                                         <Field className="bg-gray-200 border-b-2 border-gray-700 focus:outline-none" type="text" name="name" id="name" />
+                                        {errors.name && touched.name ? (
+                                            <p className="text-xs text-red-500">{errors.name}</p>
+                                        ) : null}
                                     </div>
                                     <div className="flex flex-col">
                                         <label className="font-bold text-gray-500 pb-2" htmlFor="email">EMAIL</label>
                                         <Field className="bg-gray-200 border-b-2 border-gray-700 focus:outline-none" type="email" name="email" id="email" />
+                                        {errors.email && touched.email ? (
+                                            <p className="text-xs text-red-500">{errors.email}</p>
+                                        ) : null}
                                     </div>
                                     <div className="flex flex-col">
                                         <label className="font-bold text-gray-500 pb-2" htmlFor="phone">PHONE NO</label>
                                         <Field className="bg-gray-200 border-b-2 border-gray-700 focus:outline-none" type="tel" required name="phone" id="phone" />
+                                        {errors.phone && touched.phone ? (
+                                            <p className="text-xs text-red-500">{errors.phone}</p>
+                                        ) : null}
                                     </div>
                                     <div className="flex flex-col">
                                         <label className="font-bold text-gray-500 pb-2" htmlFor="location">PREFERRED LOCATION</label>
@@ -94,49 +89,14 @@ function Contact() {
                                 {
                                     loading &&
                                     <div className="flex flex-col pt-4 text-center">
-                                        <p className="px-4 py-2 rounded-md bg-gray-700 text-white transition-opacity ease-in-out">Sent successfully.</p>
+                                        <p className="px-4 py-2 rounded-md bg-gray-700 text-white transition-opacity ease-in-out">Message Sent successfully!!</p>
                                     </div>
                                 }
-
                             </Form>
                         )}
                     </Formik>
-                    {/* <form className="px-3 md:px-10 py-5" >
-                        <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                            <div className="flex flex-col ">
-                                <label className="font-bold text-gray-500 pb-2" htmlFor="name">NAME</label>
-                                <input required className="bg-gray-200 border-b-2 border-gray-700 focus:outline-none" type="text" name="name" id="name" onChange={handleChange} />
-                            </div>
-                            <div className="flex flex-col">
-                                <label className="font-bold text-gray-500 pb-2" htmlFor="email">EMAIL</label>
-                                <input required autoComplete="email" className="bg-gray-200 border-b-2 border-gray-700 focus:outline-none" type="email" name="email" id="email" onChange={handleChange} />
-                            </div>
-                            <div className="flex flex-col">
-                                <label className="font-bold text-gray-500 pb-2" htmlFor="phone">PHONE NO</label>
-                                <input className="bg-gray-200 border-b-2 border-gray-700 focus:outline-none" type="tel" maxLength={10} required name="phone" id="phone" onChange={handleChange} />
-                            </div>
-                            <div className="flex flex-col">
-                                <label className="font-bold text-gray-500 pb-2" htmlFor="location">PREFERRED LOCATION</label>
-                                <input className="bg-gray-200 border-b-2 border-gray-700 focus:outline-none" type="text" name="location" id="location" onChange={handleChange} />
-                            </div>
-                        </div>
-                        <div className="flex flex-col pt-4">
-                            <label className="font-bold text-gray-500 pb-2" htmlFor="query">YOUR QUERY</label>
-                            <textarea className="bg-gray-200 border-b-2 border-gray-700 focus:outline-none" rows="3" name="query" id="query" onChange={handleChange} />
-                        </div>
-                        <div className="flex items-center justify-end pt-4">
-                            <button className="border-2 border-gray-700 rounded-md py-2 px-4 font-semibold text-gray-700 hover:text-yellow-50 hover:bg-gray-700" type="submit">Send Message</button>
-                        </div>
-                        {
-                            loading &&
-                            <div className="flex flex-col pt-4 text-center">
-                                <p className="px-4 py-2 rounded-md bg-gray-700 text-white transition-opacity ease-in-out">Sent successfully.</p>
-                            </div>
-                        }
-                    </form> */}
                 </div>
             </div>
-
         </section>
     )
 }

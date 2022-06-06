@@ -152,7 +152,7 @@ function PropertyPage({ propertyData }) {
                             </div>
 
                             {amenitiesShow === 6 ?
-                                <div className=' grid grid-cols-2 p-2 gap-y-2 pl-4 pb-4 font-Roboto font-medium text-gray-600'>
+                                <div className=' grid grid-cols-2 p-2 gap-y-3 pl-4 pb-4 font-Roboto font-medium text-gray-600'>
                                     {
                                         amenitiesArray.slice(0, 6).map((amenities) => {
                                             return (
@@ -165,7 +165,7 @@ function PropertyPage({ propertyData }) {
                                     }
 
                                 </div> :
-                                <div className=' grid grid-cols-2 p-2 gap-y-2 pl-4 pb-4 font-Roboto font-medium text-gray-600'>
+                                <div className=' grid grid-cols-2 p-2 gap-y-3 pl-4 pb-4 font-Roboto font-medium text-gray-600'>
                                     {
                                         amenitiesArray.map((amenities) => {
                                             return (
