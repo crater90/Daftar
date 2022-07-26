@@ -11,6 +11,18 @@ import WhyTrust from '../components/WhyTrust'
 
 
 export default function Home() {
+
+    const options = [
+        { value: 'newDelhi', label: 'New Delhi' },
+        { value: 'lucknow', label: 'Lucknow' },
+        { value: 'pune', label: 'Pune' },
+        { value: 'mumbai', label: 'Mumbai' },
+        { value: 'noida', label: 'Noida' },
+        { value: 'bangalore', label: 'Bangalore' },
+        { value: 'chennai', label: 'Chennai' },
+        { value: 'hyderabad', label: 'Hyderabad' },
+        { value: 'indore', label: 'Indore' },
+    ]
     return (
         <div className="bg-gray-50 font-Sora">
             <Head>

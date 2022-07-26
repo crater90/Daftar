@@ -3,7 +3,7 @@ import Link from 'next/link';
 function Cities() {
     return (
         <div className="mt-10 w-11/12 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto bg-gray-50">
-            <h1 className="text-gray-700 font-extrabold text-3xl">Top Cities.</h1>
+            <h2 className="text-gray-700 font-extrabold text-3xl">Top cities for office space</h2>
             <div className="mt-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-4">
                 <Link href="/newDelhi">
                     <div className="group flex">

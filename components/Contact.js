@@ -28,7 +28,7 @@ function Contact() {
 
     return (
         <section id="Contact us" className="mt-10 w-11/12 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto">
-            <h1 className="text-3xl text-gray-700 font-extrabold">Contact Us</h1>
+            <h5 className="text-3xl text-gray-700 font-extrabold">Contact Us</h5>
             <div className="grid mt-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 <div className="rounded-t-md md:rounded-l-md px-4 gap-y-5 py-4 md:p-4 bg-gray-700 text-yellow-50 flex flex-col justify-center items-start">
                     <h1 className="text-3xl font-bold pb-5">We'd love to hear from you...</h1>

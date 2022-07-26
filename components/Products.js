@@ -1,11 +1,11 @@
 function Products() {
     return (
         <section id="Products" className="mt-10 w-11/12 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto">
-            <h1 className="text-3xl font-bold text-gray-700">Our Products</h1>
+            <h3 className="text-3xl font-bold text-gray-700">Our Products</h3>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9 px-5 md:px-0">
                 <div className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md">
                     <div className="bg-gray-100 rounded-md">
-                        <img className="h-44 px-2 pb-2" src="/privateoffice.svg"/>
+                        <img className="h-44 px-2 pb-2" src="/privateoffice.svg" />
                     </div>
                     <div className="px-2 pb-2">
                         <h1 className="font-semibold text-xl py-2">Private Office</h1>
@@ -14,7 +14,7 @@ function Products() {
                 </div>
                 <div className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md">
                     <div className="bg-gray-100 rounded-md">
-                        <img className="h-44 px-2 pb-2" src="/coworking.svg"/>
+                        <img className="h-44 px-2 pb-2" src="/coworking.svg" />
                     </div>
                     <div className="px-2 pb-2">
                         <h1 className="font-semibold text-xl py-2">Coworking Spaces</h1>
@@ -23,7 +23,7 @@ function Products() {
                 </div>
                 <div className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md">
                     <div className="bg-gray-100 rounded-md">
-                        <img className="h-44 px-2 pb-2" src="/meeting.svg"/>
+                        <img className="h-44 px-2 pb-2" src="/meeting.svg" />
                     </div>
                     <div className="px-2 pb-2">
                         <h1 className="font-semibold text-xl py-2">Meeting Room</h1>
@@ -32,7 +32,7 @@ function Products() {
                 </div>
                 <div className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md">
                     <div className="bg-gray-100 rounded-md">
-                        <img className="h-44 px-2 pb-2" src="/daypass.svg"/>
+                        <img className="h-44 px-2 pb-2" src="/daypass.svg" />
                     </div>
                     <div className="px-2 pb-2">
                         <h1 className="font-semibold text-xl py-2">Day Pass</h1>
@@ -41,7 +41,7 @@ function Products() {
                 </div>
                 <div className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md">
                     <div className="bg-gray-100 rounded-md">
-                        <img className="h-44 px-2 pb-2" src="/serviced.svg"/>
+                        <img className="h-44 px-2 pb-2" src="/serviced.svg" />
                     </div>
                     <div className="px-2 pb-2">
                         <h1 className="font-semibold text-xl py-2">Serviced Office</h1>
@@ -50,7 +50,7 @@ function Products() {
                 </div>
                 <div className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md">
                     <div className="bg-gray-100 rounded-md">
-                        <img className="h-44 px-2 pb-2" src="/virtual.svg"/>
+                        <img className="h-44 px-2 pb-2" src="/virtual.svg" />
                     </div>
                     <div className="px-2 pb-2">
                         <h1 className="font-semibold text-xl py-2">Virtual Office</h1>
@@ -58,8 +58,8 @@ function Products() {
                     </div>
                 </div>
             </div>
-            
-            
+
+
         </section>
     )
 }

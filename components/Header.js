@@ -7,6 +7,8 @@ import { animateScroll as scroll } from "react-scroll"
 
 import Link from 'next/link'
 import SearchBox from "./SearchBox"
+import { useRouter } from "next/router"
+
 
 function Header({ homePage }) {
 
@@ -14,6 +16,9 @@ function Header({ homePage }) {
     const [click, setClick] = useState(false);
 
     const handleClick = () => setClick(!click);
+
+    const router = useRouter();
+    console.log(router);
 
     useEffect(() => {
         const changeBg = () => {
@@ -55,12 +60,16 @@ function Header({ homePage }) {
 
                     {
                         !homePage &&
-                        <div className="relative w-1/3 text-gray-600">
+                        <div className="hidden lg:inline relative w-1/3 text-gray-600">
                             {/* <div className="absolute inset-y-0 right-0 pr-2 md:pr-4 flex items-center justify-end pointer-events-none">
                                 <SearchIcon className="h-5 w-5 text-gray-900" />
                             </div>
                             <input onChange={(e) => setSearchQuery(e.target.value.toLowerCase())} className="focus:outline-none w-80 px-2 lg:pl-4 lg:pr-10 rounded-md opacity-70 py-2 text-gray-900" type="text" placeholder="Search" /> */}
-                            <SearchBox />
+                            {/* <SearchBox onChange={(e) => router.push(`/[pid]/[cities]`, `coworking-space/${e.value}`)} /> */}
+                            <SearchBox onChange={(e) => router.push({
+                                pathname: '/[pid]/[cities]',
+                                query: { pid: 'coworking-space', cities: `${e.value}` }
+                            })} />
                         </div>
                     }
 
