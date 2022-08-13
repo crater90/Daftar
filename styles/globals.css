@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Sora:wght@400;600;700;800&display=swap');
+@import "swiper/css/bundle";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,4 +14,27 @@
     .navDropdown {
         @apply lg:hidden absolute top-14 flex flex-col justify-center items-center w-full
     }
+    .prev {
+        @apply absolute top-1/2 z-10 left-3 w-8 h-8 transform -translate-y-4 rounded-full bg-gray-100 bg-opacity-60 hover:scale-105 hover:bg-opacity-100 flex justify-center items-center cursor-pointer drop-shadow-md
+    }
+    .next {
+        @apply absolute top-1/2 z-10 right-3 w-8 h-8 transform -translate-y-4 rounded-full bg-gray-100 bg-opacity-60 hover:scale-105 hover:bg-opacity-100 flex justify-center items-center cursor-pointer drop-shadow-md
+    }
+    .chevron-right {
+        @apply inline-block ml-1 h-2 w-2 border-t-2 border-r-2 border-black transform rotate-45
+    }
+    .filter-pill {
+        @apply flex-none px-3 py-2 text-sm border rounded-lg border-gray-400 hover:border-black cursor-pointer active:border-black
+    }
+
+    .home-page-navigation-pills {
+        @apply flex-none rounded-md text-sm px-2 py-1 lg:text-base lg:px-4 lg:py-2 bg-slate-100 text-gray-600 font-semibold hover:shadow-inner hover:underline cursor-pointer lg:hover:scale-105
+    }
+    
+}
+.swiper-pagination-bullet {
+    background-color: rgb(209 213 219) !important;
+}
+.swiper-pagination-bullet-active {
+    background-color: rgb(243 244 246) !important;
 }
