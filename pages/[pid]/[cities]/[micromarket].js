@@ -83,6 +83,10 @@ function Micromarket({ refinedData }) {
     }
     const metaDetails = getmetaDetails();
 
+    if (router.isFallback) {
+        return <div>Loading...</div>
+    }
+
     return (
         <div>
             <Head>
@@ -251,7 +255,8 @@ export async function getStaticProps(context) {
     })
 
     return {
-        props: { refinedData }
+        props: { refinedData },
+        revalidate: 1,
     };
 }
 
