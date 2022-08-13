@@ -39,7 +39,7 @@ function CityPageForm({ triggerAnimate, city }) {
     return (
         <div className="">
             <div className={`sticky top-20 py-4 px-6 bg-white font-Sora text-base border rounded-md  ${shake ? 'animate-shakeLeftRight border-slate-600 shadow-sm' : 'border-gray-200 drop-shadow-md'}`}>
-                <h1 className="text-xl font-semibold capitalize">Interested in Office spaces in {city}</h1>
+                <h2 className="text-xl font-semibold capitalize">Interested in Office spaces in {city}</h2>
                 <p>Leave your details below</p>
                 <Formik
                     initialValues={initialState}
@@ -47,7 +47,6 @@ function CityPageForm({ triggerAnimate, city }) {
                     onSubmit={async (values, { resetForm }) => {
                         try {
                             const docRef = await addDoc(collection(db, "leads"), values);
-                            console.log('doc added -->', values);
                             toast.success('Success, We will get back to you soon');
                             resetForm();
                         } catch (error) {
@@ -78,11 +77,11 @@ function CityPageForm({ triggerAnimate, city }) {
                                     <p className="text-xs text-red-500">{errors.email}</p>
                                 ) : null}
                             </div>
-                            <button type="submit" className="mt-4 border-2 rounded w-full px-4 py-2 font-semibold hover:bg-gray-600 hover:border-gray-600 hover:text-white">Request a callback</button>
+                            <button type="submit" className="mt-4 border-2 rounded w-full px-4 py-2 font-semibold bg-gray-600 border-gray-600 text-white">Request a callback</button>
                             <div className="my-4 border-b"></div>
 
                             <div className="mt-4">
-                                <p className="text-xl font-semibold my-2">Call our experts</p>
+                                <h2 className="text-xl font-semibold my-2">Call our experts</h2>
                                 <span className="text-gray-600 cursor-pointer"><PhoneIcon className="h-5 w-5 inline mr-2" />7983069435</span>
                                 <p className="text-gray-600 mt-2 cursor-pointer"><MailIcon className="h5 w-5 inline mr-2" />info@smartdaftar.com</p>
                             </div>

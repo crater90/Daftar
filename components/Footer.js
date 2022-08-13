@@ -1,7 +1,8 @@
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa"
 import { useState } from "react"
 import { Tab } from '@headlessui/react'
-import { startCase } from "lodash"
+import { kebabCase, startCase } from "lodash"
+import Link from 'next/link'
 
 
 function classNames(...classes) {
@@ -12,52 +13,568 @@ function Footer() {
     const [show, setShow] = useState(false)
     const [categories] = useState({
         privateOffice: [
-            'Private Office in Ahmedabad',
-            'Private Office in Mumbai',
-            'Private Office in Ahmedabad',
-            'Private Office in Mumbai',
-            'Private Office in Ahmedabad',
-            'Private Office in Mumbai',
+            {
+                pid: 'Private Office',
+                city: 'Ahmedabad'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Bangalore'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Chennai'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Chandigarh'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Coimbatore'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Gurgaon'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Goa'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Hyderabad'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Indore'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Jaipur'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Kanpur'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Kolkata'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Kochi'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Lucknow'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Mumbai'
+            },
+            {
+                pid: 'Private Office',
+                city: 'New Delhi'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Noida'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Nagpur'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Patna'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Pune'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Ranchi'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Surat'
+            },
+            {
+                pid: 'Private Office',
+                city: 'Vadodara'
+            },
         ],
-        coworkingSpaces: [
-            'Coworking Spaces in Ahmedabad',
-            'Coworking Spaces in Mumbai',
-            'Coworking Spaces in Ahmedabad',
-            'Coworking Spaces in Mumbai',
-            'Coworking Spaces in Ahmedabad',
-            'Coworking Spaces in Mumbai',
+        coworkingSpace: [
+            {
+                pid: 'Coworking Space',
+                city: 'Ahmedabad'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Bangalore'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Chennai'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Chandigarh'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Coimbatore'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Gurgaon'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Goa'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Hyderabad'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Indore'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Jaipur'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Kanpur'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Kolkata'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Kochi'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Lucknow'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Mumbai'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'New Delhi'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Noida'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Nagpur'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Patna'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Pune'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Ranchi'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Surat'
+            },
+            {
+                pid: 'Coworking Space',
+                city: 'Vadodara'
+            },
         ],
         meetingRoom: [
-            'Meeting Room in Ahmedabad',
-            'Meeting Room in Mumbai',
-            'Meeting Room in Ahmedabad',
-            'Meeting Room in Mumbai',
-            'Meeting Room in Ahmedabad',
-            'Meeting Room in Mumbai',
+            {
+                pid: 'Meeting Room',
+                city: 'Ahmedabad'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Bangalore'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Chennai'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Chandigarh'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Coimbatore'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Gurgaon'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Goa'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Hyderabad'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Indore'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Jaipur'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Kanpur'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Kolkata'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Kochi'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Lucknow'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Mumbai'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'New Delhi'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Noida'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Nagpur'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Patna'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Pune'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Ranchi'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Surat'
+            },
+            {
+                pid: 'Meeting Room',
+                city: 'Vadodara'
+            },
         ],
         dayPass: [
-            'Day Pass in Ahmedabad',
-            'Day Pass in Mumbai',
-            'Day Pass in Ahmedabad',
-            'Day Pass in Mumbai',
-            'Day Pass in Ahmedabad',
-            'Day Pass in Mumbai',
+            {
+                pid: 'Day Pass',
+                city: 'Ahmedabad'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Bangalore'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Chennai'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Chandigarh'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Coimbatore'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Gurgaon'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Goa'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Hyderabad'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Indore'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Jaipur'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Kanpur'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Kolkata'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Kochi'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Lucknow'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Mumbai'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'New Delhi'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Noida'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Nagpur'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Patna'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Pune'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Ranchi'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Surat'
+            },
+            {
+                pid: 'Day Pass',
+                city: 'Vadodara'
+            },
         ],
-        servicedOffice: [
-            'Serviced Office in Ahmedabad',
-            'Serviced Office in Mumbai',
-            'Serviced Office in Ahmedabad',
-            'Serviced Office in Mumbai',
-            'Serviced Office in Ahmedabad',
-            'Serviced Office in Mumbai',
+        commercialSpace: [
+            {
+                pid: 'Commercial Space',
+                city: 'Ahmedabad'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Bangalore'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Chennai'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Chandigarh'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Coimbatore'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Gurgaon'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Goa'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Hyderabad'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Indore'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Jaipur'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Kanpur'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Kolkata'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Kochi'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Lucknow'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Mumbai'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'New Delhi'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Noida'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Nagpur'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Patna'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Pune'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Ranchi'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Surat'
+            },
+            {
+                pid: 'Commercial Space',
+                city: 'Vadodara'
+            },
         ],
         virtualOffice: [
-            'Virtual Office in Ahmedabad',
-            'Virtual Office in Mumbai',
-            'Virtual Office in Ahmedabad',
-            'Virtual Office in Mumbai',
-            'Virtual Office in Ahmedabad',
-            'Virtual Office in Mumbai',
+            {
+                pid: 'Virtual Office',
+                city: 'Ahmedabad'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Bangalore'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Chennai'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Chandigarh'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Coimbatore'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Gurgaon'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Goa'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Hyderabad'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Indore'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Jaipur'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Kanpur'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Kolkata'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Kochi'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Lucknow'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Mumbai'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'New Delhi'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Noida'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Nagpur'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Patna'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Pune'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Ranchi'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Surat'
+            },
+            {
+                pid: 'Virtual Office',
+                city: 'Vadodara'
+            },
         ]
     })
     return (
@@ -65,7 +582,7 @@ function Footer() {
             <div className="pt-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-4">
                 <div className="flex flex-col px-2 md:pr-0 md:pl-5">
                     <h1 className="text-4xl font-bold text-yellow-50">Smartdaftar</h1>
-                    <p className="pt-5 text-sm text-yellow-50">Copyright 2021.</p>
+                    <p className="pt-5 text-sm text-yellow-50">Copyright © 2022.</p>
                     <p className="text-sm text-yellow-50">All rights reserved.</p>
                     <h4 className="pt-5 text-sm text-yellow-50">Follow us on :</h4>
                     <div className="flex mt-2 gap-x-3 mb-3">
@@ -78,9 +595,8 @@ function Footer() {
                 <div className="list-none px-2 md:pr-0 md:pl-5">
                     <h1 className=" text-yellow-50 font-semibold">COMPANY</h1>
                     <div className="text-sm py-3 leading-8 text-gray-300">
-                        <li>About us</li>
-                        <li>Post your requirements</li>
-                        <li>list your space</li>
+                        <Link href='/#AboutUs'><li className='hover:underline underline-offset-1 cursor-pointer'>About us</li></Link>
+                        <li>List your space</li>
                         <li>Blogs</li>
                         <li>Refer and earn</li>
                         <li>Terms and conditions</li>
@@ -89,23 +605,23 @@ function Footer() {
                 <div className="list-none px-2 md:pr-0 md:pl-5">
                     <h1 className=" text-yellow-50 font-semibold">PRODUCTS</h1>
                     <div className="text-sm py-3 leading-8 text-gray-300">
-                        <li>Flexi seat</li>
-                        <li>Coworking space</li>
-                        <li>Meeting room</li>
-                        <li>Private office</li>
-                        <li>Training Room</li>
-                        <li>Customised office</li>
+                        <Link href='/#Products'><li className='hover:underline underline-offset-1 cursor-pointer'>Coworking space</li></Link>
+                        <Link href='/#Products'><li className='hover:underline underline-offset-1 cursor-pointer'>Private Office</li></Link>
+                        <Link href='/#Products'><li className='hover:underline underline-offset-1 cursor-pointer'>Meeting room</li></Link>
+                        <Link href='/#Products'><li className='hover:underline underline-offset-1 cursor-pointer'>Virtual Office</li></Link>
+                        <Link href='/#Products'><li className='hover:underline underline-offset-1 cursor-pointer'>Commercial Spaces</li></Link>
+                        <Link href='/#Products'><li className='hover:underline underline-offset-1 cursor-pointer'>Day Pass</li></Link>
                     </div>
                 </div>
                 <div className="list-none px-2 md:pr-0 md:pl-5">
                     <h1 className=" text-yellow-50 font-semibold">LOCATIONS</h1>
                     <div className="text-sm py-3 leading-8 text-gray-300">
-                        <li>Delhi NCR</li>
-                        <li>Bangalore</li>
-                        <li>Hyderabad</li>
-                        <li>Pune</li>
-                        <li>Mumbai</li>
-                        <li>Lucknow</li>
+                        <Link href='/coworking-space/new-delhi'><li className='hover:underline underline-offset-1 cursor-pointer'>Delhi NCR</li></Link>
+                        <Link href='/coworking-space/bangalore'><li className='hover:underline underline-offset-1 cursor-pointer'>Bangalore</li></Link>
+                        <Link href='/coworking-space/hyderabad'><li className='hover:underline underline-offset-1 cursor-pointer'>Hyderabad</li></Link>
+                        <Link href='/coworking-space/pune'><li className='hover:underline underline-offset-1 cursor-pointer'>Pune</li></Link>
+                        <Link href='/coworking-space/mumbai'><li className='hover:underline underline-offset-1 cursor-pointer'>Mumbai</li></Link>
+                        <Link href='/coworking-space/lucknow'><li className='hover:underline underline-offset-1 cursor-pointer'>Lucknow</li></Link>
                     </div>
                 </div>
             </div>
@@ -136,7 +652,12 @@ function Footer() {
                                 >
                                     <ul className='grid md:grid-cols-2 lg:grid-cols-4 gap-2 text-sm'>
                                         {links.map((link) => (
-                                            <li>{link}</li>
+                                            <Link href={`${kebabCase(link.pid)}/${kebabCase(link.city)}`}>
+                                                <a target='_blank'>
+                                                    <li>{link.pid} in {link.city}</li>
+                                                </a>
+                                            </Link>
+
                                         ))}
                                     </ul>
                                 </Tab.Panel>
@@ -144,7 +665,9 @@ function Footer() {
                         </Tab.Panels>
                     </Tab.Group>
                 }
-
+            </div>
+            <div className="mt-10 flex items-center justify-center text-gray-300 text-sm">
+                Created by<span className="text-red-400 pl-1 underline underline-offset-4 font-semibold"><a target='_blank' href="https://twitter.com/crater90">crater90</a></span>
             </div>
         </div>
     )

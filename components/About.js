@@ -1,6 +1,6 @@
 function About() {
     return (
-        <section id="About us" className="mt-10 w-11/12 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto">
+        <section id="AboutUs" className="mt-10 w-11/12 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto">
             <h4 className="text-3xl font-extrabold text-gray-700">About Us</h4>
             <div className="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div className="flex flex-col justify-evenly gap-y-4">

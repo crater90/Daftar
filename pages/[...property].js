@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import Head from 'next/head'
 import Header from '../components/Header';
@@ -19,11 +19,18 @@ import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/outline';
 
 import { kebabCase, startCase } from "lodash";
 import Footer from '../components/Footer';
+import SmPropertyCard from '../components/SmPropertyCard';
 
 function PropertyPage({ propertyData }) {
 
     const [amenitiesShow, setAmenitiesShow] = useState(6);
+    const [similarPropData, setSimilarPropData] = useState([])
     const triggerAnimate = useRef(null);
+    const refToScroll = useRef(null);
+
+    const scroll = (scrollOffset) => {
+        refToScroll.current.scrollLeft += scrollOffset;
+    };
 
     // I am still figuring out this piece of code but it is working it is flitering object same way as we have array filter.
     Object.filter = (obj, predicate) =>
@@ -109,12 +116,30 @@ function PropertyPage({ propertyData }) {
         src: '/meetingRoom.svg'
     }]
 
+    useEffect(async () => {
+        const q = query(collection(db, "property"), where("address.city", "==", startCase(propertyData.address.city)));
+        const fetchData = await getDocs(q);
+        let refinedData = fetchData.docs.map((doc) => {
+            return {
+                id: doc.id,
+                data: doc.data()
+            }
+
+        })
+        refinedData = refinedData.filter(item => item.id != propertyData.uniqueId)
+        setSimilarPropData(refinedData);
+    }, [])
+
     return (
         <div>
             <Head>
                 <title>{`Office Space in ${propertyData.address.city} | Top Office Space in ${propertyData.address.micromarket}, ${propertyData.address.city} - Smartdaftar`}</title>
 
                 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"></meta>
+
+                <link rel="shortcut icon" href="/favicon.png"></link>
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png"></link>
+                <link rel="canonical" href={`https://smartdaftar.com/coworking-space/${kebabCase(propertyData.address.city)}/${kebabCase(propertyData.address.micromarket)}/${propertyData.uniqueId}`} />
 
                 <meta name="title" content={`Office Space in ${propertyData.address.city} | Top Office Space in ${propertyData.address.micromarket}, ${propertyData.address.city} - Smartdaftar`} property='title'></meta>
                 <meta name='og:title' property="og:title" content={`Office Space in ${propertyData.address.city} | Top Office Space in ${propertyData.address.micromarket}, ${propertyData.address.city} - Smartdaftar`}></meta>
@@ -126,13 +151,13 @@ function PropertyPage({ propertyData }) {
                 <meta name="og:description" content={`Smartdaftar offers you to book the best office space in ${propertyData.address.micromarket}, ${propertyData.address.city}. Move into fully furnished office space in Gurgaon. Book an office space now!`} property="og:description"></meta>
                 <meta name="twitter:description" content={`Smartdaftar offers you to book the best office space in ${propertyData.address.micromarket}, ${propertyData.address.city}. Move into fully furnished office space in Gurgaon. Book an office space now!`} property='twitter:description'></meta>
 
-                {/* <meta property="og:image" content="https://cofynd.com/assets/images/meta/cofynd-facebook.jpg" name='og:image'></meta>
-                <meta name="twitter:image" content="https://cofynd.com/assets/images/meta/cofynd-facebook.jpg" property='twitter:image'></meta> */}
+                <meta property="og:image" content="/image-share-thumb.jpg" name='og:image'></meta>
+                <meta name="twitter:image" content="/image-share-thumb.jpg" property='twitter:image'></meta>
 
                 <meta name="twitter:image:alt" content={`Office Space in ${propertyData.address.city} | Top Office Space in ${propertyData.address.micromarket}, ${propertyData.address.city} - Smartdaftar`} property='twitter:image:alt'></meta>
                 <meta name='og:image:alt' property="og:image:alt" content={`Office Space in ${propertyData.address.city} | Top Office Space in ${propertyData.address.micromarket}, ${propertyData.address.city} - Smartdaftar`}></meta>
-                <meta property="og:image:height" content="630"></meta>
-                <meta property="og:url" content="https://smartdaftar.com"></meta>
+                <meta property="og:image:height" content="500"></meta>
+                <meta property="og:url" content={`https://smartdaftar.com/coworking-space/${kebabCase(propertyData.address.city)}/${kebabCase(propertyData.address.micromarket)}/${propertyData.uniqueId}`}></meta>
 
             </Head>
             <div className="bg-slate-100 font-Sora h-screen overflow-y-scroll">
@@ -142,7 +167,7 @@ function PropertyPage({ propertyData }) {
                         <Breadcrumbs omitIndexList={[0]} containerClassName='text-sm md:text-base flex pt-2 lg:pt-5 pl-1 md:pl-0 pb-2 font-semibold font-Roboto truncate' listClassName='flex flex-wrap gap-x-2 capitalize' inactiveItemClassName='inline-block hover:underline after:chevron-right' activeItemClassName='text-gray-500' rootLabel="Home" />
                     </div>
                     <div className='lg:pt-2 lg:col-span-3'>
-                        <h1 className='pb-2 pl-1 md:pl-0 font-Sora text-2xl lg:text-3xl text-gray-700 font-semibold tracking-wide'>{`Daftar  ${propertyData.uniqueId}`}</h1>
+                        <h1 className='pb-2 pl-1 md:pl-0 font-Sora text-2xl lg:text-3xl text-gray-700 font-semibold tracking-wide'>{`SmartDaftar - Office Space in ${propertyData.uniqueId}`}</h1>
                         <h1 className='pb-2 pl-1 md:pl-0 font-Sora text-xl text-gray-700 font-semibold'>{propertyData.address.micromarket}</h1>
                         <Swiper className='rounded-lg h-[300px] lg:h-[400px] w-auto ' navigation={{ prevEl: '.prev', nextEl: '.next' }} pagination={{ dynamicBullets: true }} modules={[Navigation, Pagination]} loop={true}>
 
@@ -161,7 +186,7 @@ function PropertyPage({ propertyData }) {
                         </Swiper>
 
                         <div className='pt-5'>
-                            <h1 className='pl-1 md:pl-0 text-xl font-semibold'>About this Space</h1>
+                            <h3 className='pl-1 md:pl-0 text-xl font-semibold'>About this Space</h3>
                             <p className='mt-2 pl-1 md:pl-0 bg-transparent font-Roboto tracking-wide leading-6'>{propertyData.description}</p>
                         </div>
 
@@ -205,11 +230,11 @@ function PropertyPage({ propertyData }) {
                         </div>
 
                         <div className='pt-5'>
-                            <h1 className='pl-1 md:pl-0 text-xl font-semibold'>Plans and Pricing</h1>
+                            <h3 className='pl-1 md:pl-0 text-xl font-semibold'>Plans and Pricing</h3>
 
                             {propertyData?.privateOffice[0]?.seater?.length >= 1 &&
                                 <div className='mt-3 border-slate-300 border rounded-md shadow-sm p-3 lg:p-5 bg-white font-Roboto'>
-                                    <h1 className='text-gray-700 font-semibold'>Private Office</h1>
+                                    <h4 className='text-gray-700 font-semibold'>Private Office</h4>
                                     <p className='text-zinc-500'>Private cabins for teams and individuals</p>
                                     <div className='pt-2 flex items-center justify-between'>
                                         <p>starting from <span className="inline text-base font-semibold text-black">₹ 6999</span> /month *</p>
@@ -220,7 +245,7 @@ function PropertyPage({ propertyData }) {
 
                             {propertyData?.coworkingSpace?.dedicatedSeats?.length > 0 &&
                                 <div className='mt-3 border-slate-300 border rounded-md shadow-sm p-3 lg:p-5 bg-white font-Roboto'>
-                                    <h1 className='text-gray-700 font-semibold'>Dedicated Seats</h1>
+                                    <h4 className='text-gray-700 font-semibold'>Dedicated Seats</h4>
                                     <p className='text-zinc-500'>Perfect for individuals and teams for instant plugin and requirements.</p>
                                     <div className='pt-2 flex items-center justify-between'>
                                         <p>starting from <span className="inline text-base font-semibold text-black">₹ 6999</span> /month *</p>
@@ -231,7 +256,7 @@ function PropertyPage({ propertyData }) {
 
                             {propertyData?.meetingRoom[0]?.seater?.length > 0 &&
                                 <div className='mt-3 border-slate-300 border rounded-md shadow-sm p-3 lg:p-5 bg-white font-Roboto'>
-                                    <h1 className='text-gray-700 font-semibold'>Meeting Room</h1>
+                                    <h4 className='text-gray-700 font-semibold'>Meeting Room</h4>
                                     <p className='text-zinc-500'>Instant availability for Conference Room and Spaces for video shoots.</p>
                                     <div className='pt-2 flex items-center justify-between'>
                                         <p>starting from <span className="inline text-base font-semibold text-black">₹ 6999</span> /month *</p>
@@ -242,7 +267,7 @@ function PropertyPage({ propertyData }) {
 
                             {propertyData?.trainingRoom[0]?.seater?.length > 0 &&
                                 <div className='mt-3 border-slate-300 border rounded-md shadow-sm p-3 lg:p-5 bg-white font-Roboto'>
-                                    <h1 className='text-gray-700 font-semibold'>Training Room</h1>
+                                    <h4 className='text-gray-700 font-semibold'>Training Room</h4>
                                     <p className='text-zinc-500'>Instant availability for Conference Room and Spaces for video shoots.</p>
                                     <div className='pt-2 flex items-center justify-between'>
                                         <p>starting from <span className="inline text-base font-semibold text-black">₹ 6999</span> /month *</p>
@@ -253,7 +278,7 @@ function PropertyPage({ propertyData }) {
 
                             {propertyData?.virtualOffice?.available &&
                                 < div className='mt-3 border-slate-300 border rounded-md shadow-sm p-3 lg:p-5 bg-white font-Roboto'>
-                                    <h1 className='text-gray-700 font-semibold'>Virtual Office</h1>
+                                    <h4 className='text-gray-700 font-semibold'>Virtual Office</h4>
                                     <p className='text-zinc-500'>Reach your customers anywhere in India by getting an address for your business.</p>
                                     <div className='pt-2 flex items-center justify-between'>
                                         <p>starting from <span className="inline text-base font-semibold text-black">₹ 6999</span> /month *</p>
@@ -264,7 +289,7 @@ function PropertyPage({ propertyData }) {
 
                             {propertyData?.coworkingSpace?.dayPass?.length > 0 &&
                                 <div className='mt-3 border-slate-300 border rounded-md shadow-sm p-3 lg:p-5 bg-white font-Roboto'>
-                                    <h1 className='text-gray-700 font-semibold'>Day Pass</h1>
+                                    <h4 className='text-gray-700 font-semibold'>Day Pass</h4>
                                     <p className='text-zinc-500'>Book your Workspace anywhere PAN India and boost your productivity.</p>
                                     <div className='pt-2 flex items-center justify-between'>
                                         <p>starting from <span className="inline text-base font-semibold text-black">₹ 499</span> /</p>
@@ -273,6 +298,29 @@ function PropertyPage({ propertyData }) {
                                 </div>
                             }
                         </div>
+                        {similarPropData.length > 0 &&
+                            <div className='pt-5'>
+                                <div className='flex align-middle justify-between'>
+                                    <h3 className='pl-1 md:pl-0 text-xl font-semibold'>Similar Spaces</h3>
+                                    {similarPropData.length > 2 &&
+                                        <div className='flex space-x-2'>
+                                            <ChevronLeftIcon onClick={() => scroll(-300)} className='h-8 w-8 p-1 cursor-pointer rounded-full  bg-slate-200' />
+                                            <ChevronRightIcon onClick={() => scroll(300)} className='h-8 w-8 p-1 cursor-pointer rounded-full bg-slate-200' />
+                                        </div>
+                                    }
+
+                                </div>
+                                <div ref={refToScroll} className='mt-3 px-3 flex space-x-3 overflow-x-auto scroll-smooth'>
+
+                                    {similarPropData.map((item) => {
+                                        return (
+                                            <SmPropertyCard key={item.id} propertyData={item.data} />
+                                        )
+                                    })}
+
+                                </div>
+                            </div>
+                        }
                     </div>
                     <div className="hidden px-4 lg:px-8 md:grid lg:col-span-2 lg:justify-items-center">
                         <CityPageForm city={propertyData.uniqueId} triggerAnimate={triggerAnimate} />

@@ -18,7 +18,6 @@ function Header({ homePage }) {
     const handleClick = () => setClick(!click);
 
     const router = useRouter();
-    console.log(router);
 
     useEffect(() => {
         const changeBg = () => {
@@ -54,7 +53,7 @@ function Header({ homePage }) {
 
                     {homePage && <div className="hidden lg:flex items-center justify-center text-sm gap-5 font-semibold">
                         <ScrollLink className="cursor-pointer" to="Products" smooth="true" duration={1000} offset={-80}>Services</ScrollLink>
-                        <ScrollLink className="cursor-pointer" to="About us" smooth="true" duration={1000} offset={-80}>About us</ScrollLink>
+                        <ScrollLink className="cursor-pointer" to="AboutUs" smooth="true" duration={1000} offset={-80}>About us</ScrollLink>
                         <ScrollLink className="cursor-pointer" to="Contact us" smooth="true" duration={1000} offset={-80}>Contact us</ScrollLink>
                     </div>}
 

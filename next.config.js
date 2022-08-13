@@ -27,7 +27,7 @@ module.exports = {
                 permanent: true,
             },
             {
-                source: '/commercial-spaces',
+                source: '/commercial-space',
                 destination: '/', // Matched parameters can be used in the destination
                 permanent: true,
             },

@@ -17,7 +17,6 @@ function Hero() {
     const handleClick = (e) => {
         setType(kebabCase(e.target.innerText));
         setIsOpen(true)
-        console.log(type);
     }
 
     return (

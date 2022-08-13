@@ -4,20 +4,8 @@ import Select from 'react-select'
 
 function SearchBox({ onChange }) {
 
-    const options = [
-        { value: 'newDelhi', label: 'New Delhi' },
-        { value: 'lucknow', label: 'Lucknow' },
-        { value: 'pune', label: 'Pune' },
-        { value: 'mumbai', label: 'Mumbai' },
-        { value: 'noida', label: 'Noida' },
-        { value: 'bangalore', label: 'Bangalore' },
-        { value: 'chennai', label: 'Chennai' },
-        { value: 'hyderabad', label: 'Hyderabad' },
-        { value: 'indore', label: 'Indore' },
-    ]
-
     const secondaryOptions = [
-        { value: 'delhi', label: 'Delhi' },
+        { value: 'new-delhi', label: 'New Delhi' },
         { value: 'vishakhapatnam', label: 'Vishakhapatnam' },
         { value: 'jodhpur', label: 'Jodhpur' },
         { value: 'mumbai', label: 'Mumbai' },
