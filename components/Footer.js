@@ -596,7 +596,7 @@ function Footer() {
                     <h1 className=" text-yellow-50 font-semibold">COMPANY</h1>
                     <div className="text-sm py-3 leading-8 text-gray-300">
                         <Link href='/#AboutUs'><li className='hover:underline underline-offset-1 cursor-pointer'>About us</li></Link>
-                        <li>List your space</li>
+                        <Link href='https://forms.gle/EYCFWFm9UM2nopTR6'><li className='hover:underline underline-offset-1 cursor-pointer'>List your space</li></Link>
                         <li>Blogs</li>
                         <li>Refer and earn</li>
                         <li>Terms and conditions</li>

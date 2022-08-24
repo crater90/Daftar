@@ -2,7 +2,7 @@ import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/solid";
 
 import { Swiper, SwiperSlide } from "swiper/react"
 
-import { Navigation, Pagination } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper";
 import "swiper/css/navigation";
 import 'swiper/css';
 import Link from "next/link";
@@ -17,7 +17,7 @@ function PropertyCard({ data, id }) {
         <div>
             <div className="flex flex-col md:flex-row mt-4">
                 <div className="p-2">
-                    <Swiper className="rounded-lg h-[200px] w-full md:w-[300px]" navigation={{ prevEl: '.prev', nextEl: '.next' }} pagination={{ dynamicBullets: true }} modules={[Navigation, Pagination]} loop={true}>
+                    <Swiper className="rounded-lg h-[200px] w-full md:w-[300px]" navigation={{ prevEl: '.prev', nextEl: '.next' }} pagination={{ dynamicBullets: true }} modules={[Navigation, Pagination, Autoplay]} autoplay={{ delay: 3000 }} loop={true}>
 
                         {data?.photos?.map((photo) => {
                             return (

@@ -31,7 +31,8 @@ export default function Home() {
 
                 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-                <link rel="logo" type="image/png" href="/favicon.png" />
+                <link rel="shortcut icon" href="/favicon.png"></link>
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png"></link>
                 <link rel='canonical' href='https://smartdaftar.com'></link>
 
                 <meta name="title" property="title" content="Coworking Space for Rent | Office Space for Rent - Smartdaftar" />

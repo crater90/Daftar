@@ -10,11 +10,11 @@ import { doc, getDoc, getDocs, collection, where, query } from "firebase/firesto
 import { db } from "../firebase";
 
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, Pagination } from "swiper";
+import { Navigation, Pagination, Autoplay } from "swiper";
 import "swiper/css/navigation";
 import 'swiper/css';
 
-import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/solid";
+import { ChevronRightIcon, ChevronLeftIcon, LocationMarkerIcon } from "@heroicons/react/solid";
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/outline';
 
 import { kebabCase, startCase } from "lodash";
@@ -23,6 +23,7 @@ import SmPropertyCard from '../components/SmPropertyCard';
 
 function PropertyPage({ propertyData }) {
 
+    console.log(propertyData);
     const [amenitiesShow, setAmenitiesShow] = useState(6);
     const [similarPropData, setSimilarPropData] = useState([])
     const triggerAnimate = useRef(null);
@@ -162,14 +163,17 @@ function PropertyPage({ propertyData }) {
             </Head>
             <div className="bg-slate-100 font-Sora h-screen overflow-y-scroll">
                 <Header homePage={false} />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 md:max-w-4xl lg:max-w-6xl mx-auto">
-                    <div className='md:col-span-2 lg:col-span-5'>
-                        <Breadcrumbs omitIndexList={[0]} containerClassName='text-sm md:text-base flex pt-2 lg:pt-5 pl-1 md:pl-0 pb-2 font-semibold font-Roboto truncate' listClassName='flex flex-wrap gap-x-2 capitalize' inactiveItemClassName='inline-block hover:underline after:chevron-right' activeItemClassName='text-gray-500' rootLabel="Home" />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto">
+                    <div className='pl-2 xl:pl-0 md:col-span-2 lg:col-span-5'>
+                        <Breadcrumbs omitIndexList={[0]} containerClassName='text-sm md:text-base flex pt-2 lg:pt-5 pb-2 font-semibold font-Roboto truncate' listClassName='flex flex-wrap gap-x-2 capitalize' inactiveItemClassName='inline-block hover:underline after:chevron-right' activeItemClassName='text-gray-500' rootLabel="Home" />
                     </div>
-                    <div className='lg:pt-2 lg:col-span-3'>
-                        <h1 className='pb-2 pl-1 md:pl-0 font-Sora text-2xl lg:text-3xl text-gray-700 font-semibold tracking-wide'>{`SmartDaftar - Office Space in ${propertyData.uniqueId}`}</h1>
-                        <h1 className='pb-2 pl-1 md:pl-0 font-Sora text-xl text-gray-700 font-semibold'>{propertyData.address.micromarket}</h1>
-                        <Swiper className='rounded-lg h-[300px] lg:h-[400px] w-auto ' navigation={{ prevEl: '.prev', nextEl: '.next' }} pagination={{ dynamicBullets: true }} modules={[Navigation, Pagination]} loop={true}>
+                    <div className='px-2 lg:px-0 lg:pt-2 lg:col-span-3'>
+                        <h1 className='pb-2 xl:pl-0 font-Sora text-2xl lg:text-3xl text-gray-500 font-semibold tracking-wide'>{`SmartDaftar - Office Space in ${propertyData.uniqueId}`}</h1>
+                        <div className='flex items-center pb-2 gap-x-2'>
+                            <LocationMarkerIcon className='w-5 h-5 text-gray-500' />
+                            <h1 className='font-Sora text-xl text-gray-700 font-semibold'>{propertyData.address.micromarket}</h1>
+                        </div>
+                        <Swiper className='rounded-lg h-[300px] lg:h-[400px] w-auto ' navigation={{ prevEl: '.prev', nextEl: '.next' }} pagination={{ dynamicBullets: true }} modules={[Navigation, Pagination, Autoplay]} autoplay={{ delay: 3000 }} loop={true}>
 
                             {propertyData?.photos?.map((photo) => {
                                 return (
@@ -237,7 +241,7 @@ function PropertyPage({ propertyData }) {
                                     <h4 className='text-gray-700 font-semibold'>Private Office</h4>
                                     <p className='text-zinc-500'>Private cabins for teams and individuals</p>
                                     <div className='pt-2 flex items-center justify-between'>
-                                        <p>starting from <span className="inline text-base font-semibold text-black">₹ 6999</span> /month *</p>
+                                        <p>starting from <span className="inline text-base font-semibold text-black">{`₹ ${propertyData.privateOffice[0].price}`}</span> /month *</p>
                                         <p onClick={() => triggerAnimate.current()} className='text-gray-500 font-semibold hover:underline cursor-pointer'>Enquire now</p>
                                     </div>
                                 </div>
@@ -248,7 +252,7 @@ function PropertyPage({ propertyData }) {
                                     <h4 className='text-gray-700 font-semibold'>Dedicated Seats</h4>
                                     <p className='text-zinc-500'>Perfect for individuals and teams for instant plugin and requirements.</p>
                                     <div className='pt-2 flex items-center justify-between'>
-                                        <p>starting from <span className="inline text-base font-semibold text-black">₹ 6999</span> /month *</p>
+                                        <p>starting from <span className="inline text-base font-semibold text-black">{`₹ ${propertyData.coworkingSpace.pricePerPerson}`}</span> /month *</p>
                                         <p onClick={() => triggerAnimate.current()} className='text-gray-500 font-semibold hover:underline cursor-pointer'>Enquire now</p>
                                     </div>
                                 </div>
@@ -259,7 +263,7 @@ function PropertyPage({ propertyData }) {
                                     <h4 className='text-gray-700 font-semibold'>Meeting Room</h4>
                                     <p className='text-zinc-500'>Instant availability for Conference Room and Spaces for video shoots.</p>
                                     <div className='pt-2 flex items-center justify-between'>
-                                        <p>starting from <span className="inline text-base font-semibold text-black">₹ 6999</span> /month *</p>
+                                        <p>starting from <span className="inline text-base font-semibold text-black">{`₹ ${propertyData.meetingRoom[0].price}`}</span> /month *</p>
                                         <p onClick={() => triggerAnimate.current()} className='text-gray-500 font-semibold hover:underline cursor-pointer'>Enquire now</p>
                                     </div>
                                 </div>
@@ -270,7 +274,7 @@ function PropertyPage({ propertyData }) {
                                     <h4 className='text-gray-700 font-semibold'>Training Room</h4>
                                     <p className='text-zinc-500'>Instant availability for Conference Room and Spaces for video shoots.</p>
                                     <div className='pt-2 flex items-center justify-between'>
-                                        <p>starting from <span className="inline text-base font-semibold text-black">₹ 6999</span> /month *</p>
+                                        <p>starting from <span className="inline text-base font-semibold text-black">{`₹ ${propertyData.trainingRoom[0].price}`}</span> /month *</p>
                                         <p onClick={() => triggerAnimate.current()} className='text-gray-500 font-semibold hover:underline cursor-pointer'>Enquire now</p>
                                     </div>
                                 </div>
@@ -281,7 +285,7 @@ function PropertyPage({ propertyData }) {
                                     <h4 className='text-gray-700 font-semibold'>Virtual Office</h4>
                                     <p className='text-zinc-500'>Reach your customers anywhere in India by getting an address for your business.</p>
                                     <div className='pt-2 flex items-center justify-between'>
-                                        <p>starting from <span className="inline text-base font-semibold text-black">₹ 6999</span> /month *</p>
+                                        <p>starting from <span className="inline text-base font-semibold text-black">{`₹ ${propertyData.virtualOffice.pricePerYear}`}</span> /year *</p>
                                         <p onClick={() => triggerAnimate.current()} className='text-gray-500 font-semibold hover:underline cursor-pointer'>Enquire now</p>
                                     </div>
                                 </div>
@@ -292,7 +296,7 @@ function PropertyPage({ propertyData }) {
                                     <h4 className='text-gray-700 font-semibold'>Day Pass</h4>
                                     <p className='text-zinc-500'>Book your Workspace anywhere PAN India and boost your productivity.</p>
                                     <div className='pt-2 flex items-center justify-between'>
-                                        <p>starting from <span className="inline text-base font-semibold text-black">₹ 499</span> /</p>
+                                        <p>starting from <span className="inline text-base font-semibold text-black">{`₹ ${propertyData.coworkingSpace.dayPass}`}</span> /day</p>
                                         <p onClick={() => triggerAnimate.current()} className='text-gray-500 font-semibold hover:underline cursor-pointer'>Enquire now</p>
                                     </div>
                                 </div>
@@ -364,6 +368,7 @@ export async function getStaticProps({ params }) {
 
     return {
         props: { propertyData },
+        revalidate: 60,
     };
 }
 

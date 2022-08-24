@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper';
 import 'swiper/css';
 import SearchBox from './SearchBox';
 import { useRouter } from 'next/router';
@@ -22,7 +23,7 @@ function Hero() {
     return (
         <>
             <div className="relative">
-                <Swiper className="-mt-14 h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]" autoplay loop>
+                <Swiper className="-mt-14 h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]" modules={[Autoplay]} autoplay={{ delay: 3500 }} speed={900} loop={true}>
                     <SwiperSlide>
                         <img className="h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px] w-full object-cover" src="/slide01.jpg" />
                     </SwiperSlide>

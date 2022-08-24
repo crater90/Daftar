@@ -9,8 +9,9 @@ import * as Yup from 'yup';
 import { Formik, Form, Field } from "formik";
 
 import toast from "react-hot-toast";
+import { XIcon } from "@heroicons/react/outline";
 
-function CityPageForm({ triggerAnimate, city }) {
+function CityPageForm({ modal, triggerAnimate, city }) {
 
     const [shake, setShake] = useState(false);
 
@@ -37,7 +38,7 @@ function CityPageForm({ triggerAnimate, city }) {
     }, [])
 
     return (
-        <div className="">
+        <div className="relative">
             <div className={`sticky top-20 py-4 px-6 bg-white font-Sora text-base border rounded-md  ${shake ? 'animate-shakeLeftRight border-slate-600 shadow-sm' : 'border-gray-200 drop-shadow-md'}`}>
                 <h2 className="text-xl font-semibold capitalize">Interested in Office spaces in {city}</h2>
                 <p>Leave your details below</p>
@@ -49,6 +50,7 @@ function CityPageForm({ triggerAnimate, city }) {
                             const docRef = await addDoc(collection(db, "leads"), values);
                             toast.success('Success, We will get back to you soon');
                             resetForm();
+                            modal(false);
                         } catch (error) {
                             toast.error('Something went wrong', error);
                         }
@@ -89,7 +91,11 @@ function CityPageForm({ triggerAnimate, city }) {
                     )}
                 </Formik>
             </div>
-
+            {modal &&
+                <div className="absolute top-1 right-1">
+                    <XIcon onClick={() => modal(false)} className="h-6 w-6" />
+                </div>
+            }
         </div>
     )
 }
