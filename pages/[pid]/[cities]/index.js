@@ -309,7 +309,7 @@ export async function getStaticPaths() {
         //     },
         //     // See the "paths" section below
         // ],
-        fallback: false // See the "fallback" section below
+        fallback: true // See the "fallback" section below
     };
 }
 

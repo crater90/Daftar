@@ -119,7 +119,7 @@ function Micromarket({ refinedData }) {
                 <Header homePage={false} />
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto">
                     <div className="px-2 md:col-span-2 lg:col-span-5">
-                        <Breadcrumbs containerClassName='text-sm md:text-base flex pt-2 lg:pt-5 pb-2 font-semibold font-Roboto truncate' listClassName='flex flex-wrap gap-x-2 capitalize' inactiveItemClassName='inline-block hover:underline after:chevron-right' activeItemClassName='text-gray-500' rootLabel="Home" />
+                        <Breadcrumbs containerClassName='text-sm md:text-base flex pt-5 pb-2 font-semibold font-Roboto truncate' listClassName='flex flex-wrap gap-x-2 capitalize' inactiveItemClassName='inline-block hover:underline after:chevron-right' activeItemClassName='text-gray-500' rootLabel="Home" />
                         <h1 className="capitalize font-Roboto tracking-wider text-4xl font-bold text-gray-500">{startCase(pid)} in {startCase(cities)}</h1>
                         <div className="md:max-w-3xl lg:max-w-6xl mx-auto">
                             <div className="flex overflow-x-auto items-center gap-x-3 list-none py-4 border-b border-slate-300">

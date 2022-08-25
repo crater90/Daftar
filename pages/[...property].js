@@ -165,7 +165,7 @@ function PropertyPage({ propertyData }) {
                 <Header homePage={false} />
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto">
                     <div className='pl-2 xl:pl-0 md:col-span-2 lg:col-span-5'>
-                        <Breadcrumbs omitIndexList={[0]} containerClassName='text-sm md:text-base flex pt-2 lg:pt-5 pb-2 font-semibold font-Roboto truncate' listClassName='flex flex-wrap gap-x-2 capitalize' inactiveItemClassName='inline-block hover:underline after:chevron-right' activeItemClassName='text-gray-500' rootLabel="Home" />
+                        <Breadcrumbs omitIndexList={[0]} containerClassName='text-sm md:text-base flex pt-5 pb-2 font-semibold font-Roboto truncate' listClassName='flex flex-wrap gap-x-2 capitalize' inactiveItemClassName='inline-block hover:underline after:chevron-right' activeItemClassName='text-gray-500' rootLabel="Home" />
                     </div>
                     <div className='px-2 lg:px-0 lg:pt-2 lg:col-span-3'>
                         <h1 className='pb-2 xl:pl-0 font-Sora text-2xl lg:text-3xl text-gray-500 font-semibold tracking-wide'>{`SmartDaftar - Office Space in ${propertyData.uniqueId}`}</h1>
@@ -263,7 +263,7 @@ function PropertyPage({ propertyData }) {
                                     <h4 className='text-gray-700 font-semibold'>Meeting Room</h4>
                                     <p className='text-zinc-500'>Instant availability for Conference Room and Spaces for video shoots.</p>
                                     <div className='pt-2 flex items-center justify-between'>
-                                        <p>starting from <span className="inline text-base font-semibold text-black">{`₹ ${propertyData.meetingRoom[0].price}`}</span> /month *</p>
+                                        <p>starting from <span className="inline text-base font-semibold text-black">{`₹ ${propertyData.meetingRoom[0].price}`}</span> /hour *</p>
                                         <p onClick={() => triggerAnimate.current()} className='text-gray-500 font-semibold hover:underline cursor-pointer'>Enquire now</p>
                                     </div>
                                 </div>
@@ -274,7 +274,7 @@ function PropertyPage({ propertyData }) {
                                     <h4 className='text-gray-700 font-semibold'>Training Room</h4>
                                     <p className='text-zinc-500'>Instant availability for Conference Room and Spaces for video shoots.</p>
                                     <div className='pt-2 flex items-center justify-between'>
-                                        <p>starting from <span className="inline text-base font-semibold text-black">{`₹ ${propertyData.trainingRoom[0].price}`}</span> /month *</p>
+                                        <p>starting from <span className="inline text-base font-semibold text-black">{`₹ ${propertyData.trainingRoom[0].price}`}</span> /hour *</p>
                                         <p onClick={() => triggerAnimate.current()} className='text-gray-500 font-semibold hover:underline cursor-pointer'>Enquire now</p>
                                     </div>
                                 </div>
@@ -357,7 +357,7 @@ export async function getStaticPaths() {
 
     // We'll pre-render only these paths at build time.
     // { fallback: false } means other routes should 404.
-    return { paths, fallback: false }
+    return { paths, fallback: true }
 }
 
 export async function getStaticProps({ params }) {
