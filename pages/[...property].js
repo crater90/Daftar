@@ -22,6 +22,7 @@ import Footer from '../components/Footer';
 import SmPropertyCard from '../components/SmPropertyCard';
 
 import { useRouter } from 'next/router'
+import { Jelly } from "@uiball/loaders";
 
 function PropertyPage({ propertyData }) {
 
