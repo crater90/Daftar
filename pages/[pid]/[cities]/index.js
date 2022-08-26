@@ -23,14 +23,22 @@ import ModalForMobile from "../../../components/ModalForMobile";
 
 function CityPage({ refinedData, uniq }) {
 
+    const router = useRouter();
+
+    if (router.isFallback) {
+        return (
+            <div className='w-screen h-screen flex items-center justify-center fixed text-xl top-0 left-0 bg-white z-40'>
+                <Jelly size={50} color='#6b7280' />
+            </div>
+        )
+    }
+
     //having a recoil state to store micromarkets in a city for filtering
     const [microArray, setMicroArray] = useRecoilState(microMarketAtom)
     useEffect(() => {
         setMicroArray(uniq)
     }, [])
 
-
-    const router = useRouter();
     const { cities, pid } = router.query;
 
     const metaCity = startCase(cities)
@@ -128,7 +136,7 @@ function CityPage({ refinedData, uniq }) {
                         <h1 className="capitalize font-Roboto tracking-wider text-4xl font-bold text-gray-500">{startCase(pid)} in {startCase(cities)}</h1>
                         <div className="md:max-w-3xl lg:max-w-6xl mx-auto">
                             <div className="flex overflow-x-auto items-center gap-x-3 list-none py-4 border-b border-slate-300">
-                                {uniq.map(item => {
+                                {uniq?.map(item => {
                                     return (
                                         <Link key={item} href={`/${encodeURIComponent(pid)}/${encodeURIComponent(cities)}/${encodeURIComponent(kebabCase(item))}`}>
                                             <li className="filter-pill">{item}</li>

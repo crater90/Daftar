@@ -21,13 +21,24 @@ import { kebabCase, startCase } from "lodash";
 import Footer from '../components/Footer';
 import SmPropertyCard from '../components/SmPropertyCard';
 
+import { useRouter } from 'next/router'
+
 function PropertyPage({ propertyData }) {
 
-    console.log(propertyData);
     const [amenitiesShow, setAmenitiesShow] = useState(6);
     const [similarPropData, setSimilarPropData] = useState([])
     const triggerAnimate = useRef(null);
     const refToScroll = useRef(null);
+
+    const router = useRouter();
+
+    if (router.isFallback) {
+        return (
+            <div className='w-screen h-screen flex items-center justify-center fixed text-xl top-0 left-0 bg-white z-40'>
+                <Jelly size={50} color='#6b7280' />
+            </div>
+        )
+    }
 
     const scroll = (scrollOffset) => {
         refToScroll.current.scrollLeft += scrollOffset;
@@ -327,9 +338,8 @@ function PropertyPage({ propertyData }) {
                         }
                     </div>
                     <div className="hidden px-4 lg:px-8 md:grid lg:col-span-2 lg:justify-items-center">
-                        <CityPageForm city={propertyData.uniqueId} triggerAnimate={triggerAnimate} />
+                        <CityPageForm city={propertyData?.uniqueId} triggerAnimate={triggerAnimate} />
                     </div>
-
                 </div>
                 <Footer />
             </div>
