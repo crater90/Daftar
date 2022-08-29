@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-import { PhoneIcon, MenuIcon, XIcon } from "@heroicons/react/outline"
+import { PhoneIcon, MenuIcon, XIcon } from "@heroicons/react/solid"
 
 import { Link as ScrollLink } from "react-scroll"
 import { animateScroll as scroll } from "react-scroll"
@@ -38,16 +38,16 @@ function Header({ homePage }) {
     }, []);
 
     return (
-        <>
+        <header>
             <div className={navbar ? "bg-gray-700 bg-opacity-60 sticky top-0 glassNavbar" : "bg-transparent sticky top-0 glassNavbar"}>
-                <div className="flex items-center justify-between max-w-6xl mx-5 lg:mx-auto py-3">
+                <div className="flex items-center justify-between md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto px-2 py-3">
 
                     {homePage ? (
-                        <div className="lg:inline-grid cursor-pointer text-2xl">
-                            <a onClick={() => scroll.scrollToTop()} className="font-bold">Smartdaftar</a>
+                        <div className="lg:inline-grid cursor-pointer text-2xl lg:text-3xl font-extrabold font-Rubik">
+                            <a onClick={() => scroll.scrollToTop()} className="">smartdaftar</a>
                         </div>) : (
-                        <div className="lg:inline-grid cursor-pointer text-2xl">
-                            <Link href='/'><a className="font-bold">Smartdaftar</a></Link>
+                        <div className="lg:inline-grid cursor-pointer text-2xl lg:text-3xl font-extrabold font-Rubik">
+                            <Link href='/'><a className="">smartdaftar</a></Link>
                         </div>
                     )}
 
@@ -93,7 +93,7 @@ function Header({ homePage }) {
                     </div>
                 )}
             </div>
-        </>
+        </header>
     )
 }
 

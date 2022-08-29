@@ -22,16 +22,16 @@ function Hero() {
 
     return (
         <>
-            <div className="relative">
-                <Swiper className="-mt-14 h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]" modules={[Autoplay]} autoplay={{ delay: 3500 }} speed={900} loop={true}>
+            <section className="relative">
+                <Swiper className="-mt-14 h-[500px] lg:h-[600px] xl:h-[600px] 2xl:h-[700px]" modules={[Autoplay]} autoplay={{ delay: 3500 }} speed={900} loop={true}>
                     <SwiperSlide>
-                        <img className="h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px] w-full object-cover" src="/slide01.jpg" />
+                        <img className="h-[500px] lg:h-[600px] xl:h-[600px] 2xl:h-[700px] w-full object-cover" src="/slide01.jpg" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img className="h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px] w-full object-cover" src="/slide02.jpg" />
+                        <img className="h-[500px] lg:h-[600px] xl:h-[600px] 2xl:h-[700px] w-full object-cover" src="/slide02.jpg" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img className=" h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px] w-full object-cover" src="/slide03.jpg" />
+                        <img className=" h-[500px] lg:h-[600px] xl:h-[600px] 2xl:h-[700px] w-full object-cover" src="/slide03.jpg" />
                     </SwiperSlide>
 
                 </Swiper>
@@ -50,7 +50,7 @@ function Hero() {
                         <p onClick={handleClick} className="home-page-navigation-pills">Commercial Spaces</p>
                     </div>
                 </div>
-            </div>
+            </section>
             <Transition appear show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-30" onClose={() => setIsOpen(false)}>
                     <Transition.Child

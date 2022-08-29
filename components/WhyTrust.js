@@ -20,7 +20,7 @@ function WhyTrust() {
                     </div>
                 </div>
                 <div className="flex items-center justify-center">
-                    <img className="rounded-md h-80 object-cover hover:opacity-90 cursor-pointer" src="/Whyus.jpg" />
+                    <img className="rounded-md h-80 object-cover hover:opacity-90" src="/Whyus.jpg" />
                 </div>
             </div>
         </div>

@@ -578,10 +578,10 @@ function Footer() {
         ]
     })
     return (
-        <div className="bg-gray-700 mt-10 pb-8">
-            <div className="pt-10 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-4">
-                <div className="flex flex-col px-2 md:pr-0 md:pl-5">
-                    <h1 className="text-4xl font-bold text-yellow-50">Smartdaftar</h1>
+        <footer className="bg-gray-700 mt-10 pb-8">
+            <div className="pt-10 w-11/12 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-4">
+                <div className="flex flex-col">
+                    <h1 className="text-4xl font-extrabold font-Rubik text-yellow-50">smartdaftar</h1>
                     <p className="pt-5 text-sm text-yellow-50">Copyright © 2022.</p>
                     <p className="text-sm text-yellow-50">All rights reserved.</p>
                     <h4 className="pt-5 text-sm text-yellow-50">Follow us on :</h4>
@@ -592,7 +592,7 @@ function Footer() {
                         <a className="flex items-center justify-center h-8 w-8 rounded-full bg-gray-500 text-yellow-50 cursor-pointer hover:bg-gray-100 hover:text-red-400"><FaTwitter className="h-5" /></a>
                     </div>
                 </div>
-                <div className="list-none px-2 md:pr-0 md:pl-5">
+                <div className="list-none">
                     <h1 className=" text-yellow-50 font-semibold">COMPANY</h1>
                     <div className="text-sm py-3 leading-8 text-gray-300">
                         <Link href='/#AboutUs'><li className='hover:underline underline-offset-1 cursor-pointer'>About us</li></Link>
@@ -602,7 +602,7 @@ function Footer() {
                         <li>Terms and conditions</li>
                     </div>
                 </div>
-                <div className="list-none px-2 md:pr-0 md:pl-5">
+                <div className="list-none">
                     <h1 className=" text-yellow-50 font-semibold">PRODUCTS</h1>
                     <div className="text-sm py-3 leading-8 text-gray-300">
                         <Link href='/#Products'><li className='hover:underline underline-offset-1 cursor-pointer'>Coworking space</li></Link>
@@ -613,7 +613,7 @@ function Footer() {
                         <Link href='/#Products'><li className='hover:underline underline-offset-1 cursor-pointer'>Day Pass</li></Link>
                     </div>
                 </div>
-                <div className="list-none px-2 md:pr-0 md:pl-5">
+                <div className="list-none">
                     <h1 className=" text-yellow-50 font-semibold">LOCATIONS</h1>
                     <div className="text-sm py-3 leading-8 text-gray-300">
                         <Link href='/coworking-space/new-delhi'><li className='hover:underline underline-offset-1 cursor-pointer'>Delhi NCR</li></Link>
@@ -625,7 +625,7 @@ function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="px-2 md:pr-5 md:pl-5 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto">
+            <div className="w-11/12 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto">
                 <button onClick={() => setShow(!show)} className="text-yellow-50 font-semibold rounded-md border border-slate-300 px-4 py-2">View More</button>
                 {show &&
                     <Tab.Group>
@@ -669,7 +669,7 @@ function Footer() {
             <div className="mt-10 flex items-center justify-center text-gray-300 text-sm">
                 Created by<span className="text-red-400 pl-1 underline underline-offset-4 font-semibold"><a target='_blank' href="https://twitter.com/crater90">crater90</a></span>
             </div>
-        </div>
+        </footer>
     )
 }
 

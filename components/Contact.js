@@ -50,8 +50,8 @@ function Contact() {
                         }
                     }}>
                         {({ values, errors, touched }) => (
-                            <Form className="px-3 md:px-10 py-5">
-                                <div className="grid grid-cols-2 gap-y-4 gap-x-8">
+                            <Form className="px-5 md:px-10 py-5">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
                                     <div className="flex flex-col ">
                                         <label className="font-bold text-gray-500 pb-2" htmlFor="name">NAME</label>
                                         <Field className="bg-gray-200 border-b-2 border-gray-700 focus:outline-none" type="text" name="name" id="name" />
@@ -82,8 +82,8 @@ function Contact() {
                                     <label className="font-bold text-gray-500 pb-2" htmlFor="query">YOUR QUERY</label>
                                     <Field as='textarea' rows={3} className="bg-gray-200 border-b-2 border-gray-700 focus:outline-none" name="query" id="query" />
                                 </div>
-                                <div className="flex items-center justify-end pt-4">
-                                    <button className="border-2 border-gray-700 rounded-md py-2 px-4 font-semibold text-gray-700 hover:text-yellow-50 hover:bg-gray-700" type="submit">Send Message</button>
+                                <div className="flex items-center justify-end pt-5">
+                                    <button className="border-2 border-gray-700 w-full sm:w-auto rounded-md py-2 px-4 font-semibold text-gray-700 hover:text-yellow-50 hover:bg-gray-700" type="submit">Send Message</button>
                                 </div>
                                 {
                                     loading &&

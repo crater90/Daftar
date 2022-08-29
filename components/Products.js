@@ -9,7 +9,7 @@ function Products() {
     const [isOpen, setIsOpen] = useState(false)
     const router = useRouter();
     return (
-        <section id="Products" className="mt-10 w-11/12 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto">
+        <section id="Products" className="mt-10 w-11/12 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto bg-white">
             <h3 className="text-3xl font-bold text-gray-700">Our Products</h3>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9 px-5 md:px-0">
                 <div
@@ -17,13 +17,13 @@ function Products() {
                         setType('private-office')
                         setIsOpen(true)
                     }}
-                    className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md"
+                    className=" cursor-pointer hover:shadow hover:scale-105 transition transform ease-out rounded-md border border-slate-200"
                 >
-                    <div className="bg-gray-100 rounded-md">
-                        <img className="h-44 px-2 pb-2" src="/privateoffice.svg" />
+                    <div className="bg-slate-100">
+                        <img className="h-36 sm:h-44 px-2" src="/privateoffice.svg" />
                     </div>
-                    <div className="px-2 pb-2">
-                        <h1 className="font-semibold text-xl py-2">Private Office</h1>
+                    <div className="p-5">
+                        <h1 className="font-semibold text-xl pb-2">Private Office</h1>
                         <p className="text-sm">Ready to move fully furnished private Spaces for teams or individual.</p>
                     </div>
                 </div>
@@ -32,12 +32,12 @@ function Products() {
                         setType('coworking-space')
                         setIsOpen(true)
                     }}
-                    className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md">
-                    <div className="bg-gray-100 rounded-md">
-                        <img className="h-44 px-2 pb-2" src="/coworking.svg" />
+                    className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md border border-slate-200">
+                    <div className="bg-slate-100">
+                        <img className="h-36 sm:h-44 px-2" src="/coworking.svg" />
                     </div>
-                    <div className="px-2 pb-2">
-                        <h1 className="font-semibold text-xl py-2">Coworking Spaces</h1>
+                    <div className="p-5">
+                        <h1 className="font-semibold text-xl pb-2">Coworking Spaces</h1>
                         <p className="text-sm">Flexi and Dedicated Desks for instant plug and work requirements.</p>
                     </div>
                 </div>
@@ -46,12 +46,12 @@ function Products() {
                         setType('meeting-room')
                         setIsOpen(true)
                     }}
-                    className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md">
-                    <div className="bg-gray-100 rounded-md">
-                        <img className="h-44 px-2 pb-2" src="/meeting.svg" />
+                    className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md border border-slate-200">
+                    <div className="bg-slate-100">
+                        <img className="h-36 sm:h-44 px-2" src="/meeting.svg" />
                     </div>
-                    <div className="px-2 pb-2">
-                        <h1 className="font-semibold text-xl py-2">Meeting Room</h1>
+                    <div className="p-5">
+                        <h1 className="font-semibold text-xl pb-2">Meeting Room</h1>
                         <p className="text-sm">Instant availability for Conference Room and Spaces for video shoots.</p>
                     </div>
                 </div>
@@ -60,12 +60,12 @@ function Products() {
                         setType('day-pass')
                         setIsOpen(true)
                     }}
-                    className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md">
-                    <div className="bg-gray-100 rounded-md">
-                        <img className="h-44 px-2 pb-2" src="/daypass.svg" />
+                    className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md border border-slate-200">
+                    <div className="bg-slate-100">
+                        <img className="h-36 sm:h-44 px-2" src="/daypass.svg" />
                     </div>
-                    <div className="px-2 pb-2">
-                        <h1 className="font-semibold text-xl py-2">Day Pass</h1>
+                    <div className="p-5">
+                        <h1 className="font-semibold text-xl pb-2">Day Pass</h1>
                         <p className="text-sm">Book your Workspace anywhere PAN India and boost your productivity.</p>
                     </div>
                 </div>
@@ -74,12 +74,12 @@ function Products() {
                         setType('commercial-space')
                         setIsOpen(true)
                     }}
-                    className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md">
-                    <div className="bg-gray-100 rounded-md">
-                        <img className="h-44 px-2 pb-2" src="/serviced.svg" />
+                    className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md border border-slate-200">
+                    <div className="bg-slate-100">
+                        <img className="h-36 sm:h-44 px-2" src="/serviced.svg" />
                     </div>
-                    <div className="px-2 pb-2">
-                        <h1 className="font-semibold text-xl py-2">Serviced Office</h1>
+                    <div className="p-5">
+                        <h1 className="font-semibold text-xl pb-2">Serviced Office</h1>
                         <p className="text-sm">100% Customized office space to match your organisation's requirement.</p>
                     </div>
                 </div>
@@ -88,12 +88,12 @@ function Products() {
                         setType('virtual-office')
                         setIsOpen(true)
                     }}
-                    className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md">
-                    <div className="bg-gray-100 rounded-md">
-                        <img className="h-44 px-2 pb-2" src="/virtual.svg" />
+                    className=" cursor-pointer hover:shadow-sm hover:scale-105 transition transform ease-out rounded-md border border-slate-200">
+                    <div className="bg-slate-100">
+                        <img className="h-36 sm:h-44 px-2" src="/virtual.svg" />
                     </div>
-                    <div className="px-2 pb-2">
-                        <h1 className="font-semibold text-xl py-2">Virtual Office</h1>
+                    <div className="p-5">
+                        <h1 className="font-semibold text-xl pb-2">Virtual Office</h1>
                         <p className="text-sm">Reach your customers anywhere in India by getting an address for your business.</p>
                     </div>
                 </div>
@@ -139,8 +139,6 @@ function Products() {
                     </div>
                 </Dialog>
             </Transition>
-
-
         </section>
     )
 }
