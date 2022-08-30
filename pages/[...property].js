@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import Head from 'next/head'
 import Header from '../components/Header';
 import CityPageForm from "../components/CityPageForm";
+import ModalForMobile from '../components/ModalForMobile';
 
 import Breadcrumbs from 'nextjs-breadcrumbs';
 
@@ -45,11 +46,15 @@ function PropertyPage({ propertyData }) {
         refToScroll.current.scrollLeft += scrollOffset;
     };
 
+    const modelRef = useRef(null);
+
+    const handleModal = () => {
+        modelRef.current.showModal();
+    };
+
     // I am still figuring out this piece of code but it is working it is flitering object same way as we have array filter.
     Object.filter = (obj, predicate) =>
-        Object.keys(obj)
-            .filter(key => predicate(obj[key]))
-            .reduce((res, key) => (res[key] = obj[key], res), {});
+        Object.keys(obj).filter(key => predicate(obj[key])).reduce((res, key) => (res[key] = obj[key], res), {});
 
     const amenitiesFetched = propertyData?.amenities;
 
@@ -343,6 +348,10 @@ function PropertyPage({ propertyData }) {
                     </div>
                 </div>
                 <Footer />
+                <div className="sticky border-t border-t-slate-300 md:hidden py-2 flex bottom-0 bg-white z-30 justify-center">
+                    <button onClick={handleModal} className="font-semibold bg-red-400 hover:bg-white hover:text-red-400 border hover:border-red-400 text-white py-2 w-11/12 sm:w-3/4 rounded-md">Enquire Now</button>
+                </div>
+                <ModalForMobile ref={modelRef} city={propertyData.uniqueId} triggerAnimate={triggerAnimate} />
             </div>
 
         </div >

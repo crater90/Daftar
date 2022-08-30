@@ -28,7 +28,7 @@
     }
 
     .home-page-navigation-pills {
-        @apply flex-none rounded-md text-sm px-2 py-1 lg:text-base lg:px-4 lg:py-2 bg-slate-100 text-gray-600 font-semibold hover:shadow-inner hover:underline cursor-pointer lg:hover:scale-105
+        @apply flex-none rounded-md text-sm px-2 py-1 lg:text-base lg:px-4 lg:py-2 bg-slate-100 text-gray-600 border border-slate-200 font-semibold shadow-inner hover:-translate-y-1 cursor-pointer transition ease-out
     }
     
 }

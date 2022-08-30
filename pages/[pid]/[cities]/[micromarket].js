@@ -7,6 +7,7 @@ import Header from '../../../components/Header';
 import PropertyCard from "../../../components/PropertyCard";
 import CityPageForm from "../../../components/CityPageForm";
 import Footer from "../../../components/Footer";
+import ModalForMobile from "../../../components/ModalForMobile";
 
 import Breadcrumbs from 'nextjs-breadcrumbs';
 
@@ -35,6 +36,12 @@ function Micromarket({ refinedData }) {
     const newData = newMicro?.filter(item => item != startCase(micromarket))
 
     const triggerAnimate = useRef(null);
+
+    const modelRef = useRef(null);
+
+    const handleModal = () => {
+        modelRef.current.showModal();
+    };
 
     // Filtering metadata according to the category of url
     const getmetaDetails = () => {
@@ -154,6 +161,10 @@ function Micromarket({ refinedData }) {
                     </div>
                 </div>
                 <Footer />
+                <div className="sticky border-t border-t-slate-300 md:hidden py-2 flex bottom-0 bg-white z-30 justify-center">
+                    <button onClick={handleModal} className="font-semibold bg-red-400 hover:bg-white hover:text-red-400 border hover:border-red-400 text-white py-2 w-11/12 sm:w-3/4 rounded-md">Enquire Now</button>
+                </div>
+                <ModalForMobile ref={modelRef} city={cities} triggerAnimate={triggerAnimate} />
             </div>
 
         </div>

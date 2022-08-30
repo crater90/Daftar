@@ -598,7 +598,7 @@ function Footer() {
                         <Link href='/#AboutUs'><li className='hover:underline underline-offset-1 cursor-pointer'>About us</li></Link>
                         <Link href='https://forms.gle/EYCFWFm9UM2nopTR6'><li className='hover:underline underline-offset-1 cursor-pointer'>List your space</li></Link>
                         <li>Blogs</li>
-                        <li>Refer and earn</li>
+                        <Link href='https://forms.gle/UUFG4zkuGztyzZWE8'><li className='hover:underline underline-offset-1 cursor-pointer'>Refer and earn</li></Link>
                         <li>Terms and conditions</li>
                     </div>
                 </div>

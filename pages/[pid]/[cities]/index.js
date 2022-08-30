@@ -167,15 +167,14 @@ function CityPage({ refinedData, uniq }) {
                         <CityPageForm city={cities} triggerAnimate={triggerAnimate} />
                     </div>
 
-                    <div className="absolute border-t border-t-slate-300 md:hidden p-2 flex bottom-0 bg-white z-30 w-full justify-center">
-                        <button onClick={handleModal} className="font-semibold bg-red-400 hover:bg-white hover:text-red-400 border hover:border-red-400 text-white py-2 rounded-md w-3/4">Enquire Now</button>
-                    </div>
-                    <ModalForMobile ref={modelRef} city={cities} triggerAnimate={triggerAnimate} />
-
                 </div>
                 <Footer />
-            </div>
+                <div className="sticky border-t border-t-slate-300 md:hidden py-2 flex bottom-0 bg-white z-30 justify-center">
+                    <button onClick={handleModal} className="font-semibold bg-red-400 hover:bg-white hover:text-red-400 border hover:border-red-400 text-white py-2 w-11/12 sm:w-3/4 rounded-md">Enquire Now</button>
+                </div>
+                <ModalForMobile ref={modelRef} city={cities} triggerAnimate={triggerAnimate} />
 
+            </div>
         </div>
     )
 }
