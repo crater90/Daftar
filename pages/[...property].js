@@ -24,6 +24,7 @@ import SmPropertyCard from '../components/SmPropertyCard';
 
 import { useRouter } from 'next/router'
 import { Jelly } from "@uiball/loaders";
+import { motion } from 'framer-motion'
 
 function PropertyPage({ propertyData }) {
 
@@ -149,7 +150,7 @@ function PropertyPage({ propertyData }) {
     }, [])
 
     return (
-        <div>
+        <motion.div key={router.route} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.75 }}>
             <Head>
                 <title>{`Office Space in ${propertyData.address.city} | Top Office Space in ${propertyData.address.micromarket}, ${propertyData.address.city} - Smartdaftar`}</title>
 
@@ -180,21 +181,21 @@ function PropertyPage({ propertyData }) {
             </Head>
             <div className="bg-slate-100 font-Sora h-screen overflow-y-scroll">
                 <Header homePage={false} />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto">
-                    <div className='pl-2 xl:pl-0 md:col-span-2 lg:col-span-5'>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 w-11/12 md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto">
+                    <div className='md:col-span-2 lg:col-span-5'>
                         <Breadcrumbs omitIndexList={[0]} containerClassName='text-sm md:text-base flex pt-5 pb-2 font-semibold font-Roboto truncate' listClassName='flex flex-wrap gap-x-2 capitalize' inactiveItemClassName='inline-block hover:underline after:chevron-right' activeItemClassName='text-gray-500' rootLabel="Home" />
                     </div>
-                    <div className='px-2 lg:px-0 lg:pt-2 lg:col-span-3'>
+                    <div className='lg:pt-2 lg:col-span-3'>
                         <h1 className='pb-2 xl:pl-0 font-Sora text-2xl lg:text-3xl text-gray-500 font-semibold tracking-wide'>{`SmartDaftar - Office Space in ${propertyData.uniqueId}`}</h1>
-                        <div className='flex items-center pb-2 gap-x-2'>
+                        <div className='flex items-center pb-2 gap-x-1'>
                             <LocationMarkerIcon className='w-5 h-5 text-gray-500' />
-                            <h1 className='font-Sora text-xl text-gray-700 font-semibold'>{propertyData.address.micromarket}</h1>
+                            <h1 className='font-Sora sm:text-xl text-gray-700 font-semibold'>{propertyData.address.micromarket}</h1>
                         </div>
-                        <Swiper className='rounded-lg h-[300px] lg:h-[400px] w-auto ' navigation={{ prevEl: '.prev', nextEl: '.next' }} pagination={{ dynamicBullets: true }} modules={[Navigation, Pagination, Autoplay]} autoplay={{ delay: 3000 }} loop={true}>
+                        <Swiper className='rounded-lg h-[250px] sm:h-[400px] w-auto ' navigation={{ prevEl: '.prev', nextEl: '.next' }} pagination={{ dynamicBullets: true }} modules={[Navigation, Pagination, Autoplay]} autoplay={{ delay: 3000 }} loop={true}>
 
                             {propertyData?.photos?.map((photo) => {
                                 return (
-                                    <SwiperSlide><img className="object-cover h-[400px] w-full rounded-lg" src={photo} /></SwiperSlide>
+                                    <SwiperSlide><img className="object-cover h-[250px] sm:h-[400px] w-full rounded-lg" src={photo} /></SwiperSlide>
                                 )
                             })}
 
@@ -207,8 +208,8 @@ function PropertyPage({ propertyData }) {
                         </Swiper>
 
                         <div className='pt-5'>
-                            <h3 className='pl-1 md:pl-0 text-xl font-semibold'>About this Space</h3>
-                            <p className='mt-2 pl-1 md:pl-0 bg-transparent font-Roboto tracking-wide leading-6'>{propertyData.description}</p>
+                            <h3 className='text-xl font-semibold'>About this Space</h3>
+                            <p className='mt-2 bg-transparent font-Roboto tracking-wide leading-6'>{propertyData.description}</p>
                         </div>
 
                         <div className='mt-5 border rounded-md border-slate-300 bg-white shadow-inner'>
@@ -354,7 +355,7 @@ function PropertyPage({ propertyData }) {
                 <ModalForMobile ref={modelRef} city={propertyData.uniqueId} triggerAnimate={triggerAnimate} />
             </div>
 
-        </div >
+        </motion.div >
     )
 }
 

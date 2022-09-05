@@ -37,8 +37,8 @@ function Hero() {
                 </Swiper>
 
                 <div className="z-20 absolute top-1/2 md:w-1/2 origin-center transform md:translate-x-1/2">
-                    <h1 className='m-2 rounded-md text-center font-bold text-yellow-50 text-xl md:text-2xl lg:text-3xl xl:text-4xl backdrop-blur-sm'>Find your Perfect Office Space here!</h1>
-                    <div className="relative px-2 sm:px-10 md:px-10 lg:px-0">
+                    <h1 className='m-2 rounded-md text-center font-bold text-yellow-50 text-xl md:text-2xl lg:text-3xl xl:text-4xl bg-white/30 backdrop-opacity-10'>Find your Perfect Office Space here!</h1>
+                    <div className="relative text-gray-600 font-semibold text-xs sm:text-sm md:text-base px-2 sm:px-10 md:px-10 lg:px-0">
                         <SearchBox onChange={(e) => router.push(`coworking-space/${e.value}`)} />
                     </div>
                     <div className='mt-3 sm:mt-5 relative flex flex-wrap gap-2 lg:gap-4 justify-center opacity-90'>

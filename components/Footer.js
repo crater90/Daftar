@@ -597,7 +597,7 @@ function Footer() {
                     <div className="text-sm py-3 leading-8 text-gray-300">
                         <Link href='/#AboutUs'><li className='hover:underline underline-offset-1 cursor-pointer'>About us</li></Link>
                         <Link href='https://forms.gle/EYCFWFm9UM2nopTR6'><li className='hover:underline underline-offset-1 cursor-pointer'>List your space</li></Link>
-                        <li>Blogs</li>
+                        <Link href='https://forms.gle/NcUS84HuFucFPU498'><li className='hover:underline underline-offset-1 cursor-pointer'>Careers</li></Link>
                         <Link href='https://forms.gle/UUFG4zkuGztyzZWE8'><li className='hover:underline underline-offset-1 cursor-pointer'>Refer and earn</li></Link>
                         <li>Terms and conditions</li>
                     </div>

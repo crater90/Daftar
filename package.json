@@ -12,6 +12,7 @@
     "@uiball/loaders": "^1.2.6",
     "firebase": "^9.6.9",
     "formik": "^2.2.9",
+    "framer-motion": "^6.5.1",
     "lodash": "^4.17.21",
     "next": "latest",
     "nextjs-breadcrumbs": "^1.1.9",

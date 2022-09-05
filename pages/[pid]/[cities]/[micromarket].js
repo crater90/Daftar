@@ -16,11 +16,13 @@ import { db } from "../../../firebase";
 
 import { startCase, kebabCase } from "lodash";
 import { useRouter } from 'next/router'
+import { Jelly } from "@uiball/loaders";
 
 import Link from 'next/link'
 
 import { useRecoilValue } from 'recoil'
 import { microMarketAtom } from '../../../atoms/headerAtom'
+import { motion } from 'framer-motion'
 
 function Micromarket({ refinedData }) {
 
@@ -91,7 +93,11 @@ function Micromarket({ refinedData }) {
     const metaDetails = getmetaDetails();
 
     if (router.isFallback) {
-        return <div>Loading...</div>
+        return (
+            <div className='w-screen h-screen flex items-center justify-center fixed text-xl top-0 left-0 bg-white z-40'>
+                <Jelly size={50} color='#6b7280' />
+            </div>
+        )
     }
 
     return (
@@ -122,44 +128,46 @@ function Micromarket({ refinedData }) {
                 <meta property="og:image:height" content="500"></meta>
                 <meta property="og:url" content={`https://smartdaftar.com/${pid}/${cities}/${micromarket}`}></meta>
             </Head>
-            <div className="bg-slate-100 font-Sora h-screen overflow-y-scroll">
+            <div className="bg-slate-50 font-Sora h-screen overflow-y-scroll">
                 <Header homePage={false} />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto">
-                    <div className="px-2 md:col-span-2 lg:col-span-5">
-                        <Breadcrumbs containerClassName='text-sm md:text-base flex pt-5 pb-2 font-semibold font-Roboto truncate' listClassName='flex flex-wrap gap-x-2 capitalize' inactiveItemClassName='inline-block hover:underline after:chevron-right' activeItemClassName='text-gray-500' rootLabel="Home" />
-                        <h1 className="capitalize font-Roboto tracking-wider text-4xl font-bold text-gray-500">{startCase(pid)} in {startCase(micromarket)}, {startCase(cities)}</h1>
-                        <div className="md:max-w-3xl lg:max-w-6xl mx-auto">
-                            <div className="flex overflow-x-auto items-center gap-x-3 list-none py-4 border-b border-slate-300">
-                                <li className="filter-pill bg-gray-400 text-yellow-50 font-bold">{startCase(micromarket)}</li>
-                                {newData?.map(item => {
-                                    return (
-                                        <Link key={item} href={`/${encodeURIComponent(pid)}/${encodeURIComponent(cities)}/${encodeURIComponent(kebabCase(item))}`}>
-                                            <li key={item} className="filter-pill">{item}</li>
-                                        </Link>
-                                    )
-                                })}
+                <motion.div key={router.route} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.75 }}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 w-11/12 md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto">
+                        <div className="md:col-span-2 lg:col-span-5">
+                            <Breadcrumbs containerClassName='text-sm md:text-base flex pt-5 pb-2 font-semibold font-Roboto truncate' listClassName='flex flex-wrap gap-x-2 capitalize' inactiveItemClassName='inline-block hover:underline after:chevron-right' activeItemClassName='text-gray-500' rootLabel="Home" />
+                            <h1 className="capitalize font-Roboto tracking-wider text-3xl sm:text-4xl font-bold text-gray-500">{startCase(pid)} in {startCase(micromarket)}, {startCase(cities)}</h1>
+                            <div className="md:max-w-3xl lg:max-w-6xl mx-auto">
+                                <div className="flex overflow-x-auto items-center gap-x-3 list-none py-4 border-b border-slate-200">
+                                    <li className="filter-pill bg-gray-400 text-yellow-50 font-bold">{startCase(micromarket)}</li>
+                                    {newData?.map(item => {
+                                        return (
+                                            <Link key={item} href={`/${encodeURIComponent(pid)}/${encodeURIComponent(cities)}/${encodeURIComponent(kebabCase(item))}`}>
+                                                <li key={item} className="filter-pill">{item}</li>
+                                            </Link>
+                                        )
+                                    })}
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div className="md:col-span-2 lg:col-span-3">
-                        <div className="flex flex-col divide-y gap-4">
-                            {!refinedData.length == 0 ?
-                                refinedData.map((prop) => {
-                                    return <PropertyCard key={prop.id} data={prop.data} id={prop.id} />
-                                }) : (
-                                    <div className="flex flex-col justify-center">
-                                        <img className="h-[300px] md:h-[400px]" src="/404.svg"></img>
-                                        <p className="font-semibold text-gray-400 text-center mt-4">No property Found !</p>
-                                    </div>
-                                )
-                            }
+                        <div className="md:col-span-2 lg:col-span-3">
+                            <div className="flex flex-col divide-y divide-slate-200 pb-4 border-b border-slate-200 gap-y-4">
+                                {!refinedData.length == 0 ?
+                                    refinedData.map((prop) => {
+                                        return <PropertyCard key={prop.id} data={prop.data} id={prop.id} />
+                                    }) : (
+                                        <div className="flex flex-col justify-center">
+                                            <img className="h-[300px] md:h-[400px]" src="/404.svg"></img>
+                                            <p className="font-semibold text-gray-400 text-center mt-4">No property Found !</p>
+                                        </div>
+                                    )
+                                }
+                            </div>
+                        </div>
+                        <div className="hidden pt-4 pl-10 lg:inline-grid lg:col-span-2">
+                            <CityPageForm city={startCase(micromarket)} triggerAnimate={triggerAnimate} />
                         </div>
                     </div>
-                    <div className="hidden pt-2 pl-10 lg:inline-grid lg:col-span-2">
-                        <CityPageForm city={startCase(micromarket)} triggerAnimate={triggerAnimate} />
-                    </div>
-                </div>
+                </motion.div>
                 <Footer />
                 <div className="sticky border-t border-t-slate-300 md:hidden py-2 flex bottom-0 bg-white z-30 justify-center">
                     <button onClick={handleModal} className="font-semibold bg-red-400 hover:bg-white hover:text-red-400 border hover:border-red-400 text-white py-2 w-11/12 sm:w-3/4 rounded-md">Enquire Now</button>
