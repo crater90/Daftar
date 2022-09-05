@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Sora:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Rubik:wght@600;800&family=Sora:wght@400;600;700;800&display=swap');
 @import "swiper/css/bundle";
 @tailwind base;
 @tailwind components;
@@ -24,11 +24,11 @@
         @apply inline-block ml-1 h-2 w-2 border-t-2 border-r-2 border-black transform rotate-45
     }
     .filter-pill {
-        @apply flex-none px-3 py-2 text-sm border rounded-lg border-gray-400 hover:border-black cursor-pointer active:border-black
+        @apply flex-none px-3 py-2 text-xs sm:text-sm border rounded-lg border-gray-400 hover:border-black cursor-pointer active:border-black
     }
 
     .home-page-navigation-pills {
-        @apply flex-none rounded-md text-sm px-2 py-1 lg:text-base lg:px-4 lg:py-2 bg-slate-100 text-gray-600 font-semibold hover:shadow-inner hover:underline cursor-pointer lg:hover:scale-105
+        @apply flex-none rounded-md text-sm px-2 py-1 lg:text-base lg:px-4 lg:py-2 bg-slate-100 text-gray-600 border border-slate-200 font-semibold shadow-inner hover:-translate-y-1 cursor-pointer transition ease-out
     }
     
 }

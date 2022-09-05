@@ -27,14 +27,13 @@ function Contact() {
     });
 
     return (
-        <section id="Contact us" className="mt-10 w-11/12 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto">
+        <section id="ContactUs" className="mt-10 w-11/12 max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto">
             <h5 className="text-3xl text-gray-700 font-extrabold">Contact Us</h5>
             <div className="grid mt-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 <div className="rounded-t-md md:rounded-l-md px-4 gap-y-5 py-4 md:p-4 bg-gray-700 text-yellow-50 flex flex-col justify-center items-start">
                     <h1 className="text-3xl font-bold pb-5">We'd love to hear from you...</h1>
                     <span className="flex"><PhoneIcon className="h-7 pr-4" /><a href="tel:7983069435">7983069435</a></span>
                     <span className="flex"><MailIcon className="h-7 pr-4" /><a href="mailto:Info@smartdaftar.com">Info@smartdaftar.com</a></span>
-                    {/* <span className="flex"><ChatIcon className="h-7 pr-4"/>2-A/3, Kundan Mansion, Asaf Ali Rd,<br/> Delhi 110002</span> */}
                 </div>
                 <div className="bg-gray-200 lg:col-span-2 rounded-b-md md:rounded-r-md">
                     <Formik initialValues={initialState} validationSchema={submitSchema} onSubmit={async (values, { resetForm }) => {
@@ -51,8 +50,8 @@ function Contact() {
                         }
                     }}>
                         {({ values, errors, touched }) => (
-                            <Form className="px-3 md:px-10 py-5">
-                                <div className="grid grid-cols-2 gap-y-4 gap-x-8">
+                            <Form className="px-5 md:px-10 py-5">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
                                     <div className="flex flex-col ">
                                         <label className="font-bold text-gray-500 pb-2" htmlFor="name">NAME</label>
                                         <Field className="bg-gray-200 border-b-2 border-gray-700 focus:outline-none" type="text" name="name" id="name" />
@@ -83,8 +82,8 @@ function Contact() {
                                     <label className="font-bold text-gray-500 pb-2" htmlFor="query">YOUR QUERY</label>
                                     <Field as='textarea' rows={3} className="bg-gray-200 border-b-2 border-gray-700 focus:outline-none" name="query" id="query" />
                                 </div>
-                                <div className="flex items-center justify-end pt-4">
-                                    <button className="border-2 border-gray-700 rounded-md py-2 px-4 font-semibold text-gray-700 hover:text-yellow-50 hover:bg-gray-700" type="submit">Send Message</button>
+                                <div className="flex items-center justify-end pt-5">
+                                    <button className="border-2 border-gray-700 w-full sm:w-auto rounded-md py-2 px-4 font-semibold text-gray-700 hover:text-yellow-50 hover:bg-gray-700" type="submit">Send Message</button>
                                 </div>
                                 {
                                     loading &&

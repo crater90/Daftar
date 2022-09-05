@@ -10,8 +10,13 @@ import ListProperty from '../components/ListProperty'
 import Products from '../components/Products'
 import WhyTrust from '../components/WhyTrust'
 
+import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
+
 
 export default function Home() {
+
+    const router = useRouter()
 
     const options = [
         { value: 'newDelhi', label: 'New Delhi' },
@@ -25,13 +30,14 @@ export default function Home() {
         { value: 'indore', label: 'Indore' },
     ]
     return (
-        <div className="bg-gray-50 font-Sora">
+        <motion.div key={router.route} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.75 }} className="bg-gray-50 font-Sora">
             <Head>
                 <title>Coworking Space for Rent | Office Space for Rent - Smartdaftar</title>
 
                 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-                <link rel="logo" type="image/png" href="/favicon.png" />
+                <link rel="shortcut icon" href="/favicon.png"></link>
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png"></link>
                 <link rel='canonical' href='https://smartdaftar.com'></link>
 
                 <meta name="title" property="title" content="Coworking Space for Rent | Office Space for Rent - Smartdaftar" />
@@ -63,6 +69,6 @@ export default function Home() {
             <ListProperty />
             <Contact />
             <Footer />
-        </div>
+        </motion.div>
     )
 }

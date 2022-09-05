@@ -11,6 +11,7 @@ module.exports = {
       fontFamily: {
         Sora: ['Sora', 'sans-serif'],
         Roboto: ['Roboto', 'sans-serif'],
+        Rubik: ['Rubik', 'sans-serif']
       },
       keyframes: {
         shakeLeftRight: {

@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper';
 import 'swiper/css';
 import SearchBox from './SearchBox';
 import { useRouter } from 'next/router';
@@ -21,23 +22,23 @@ function Hero() {
 
     return (
         <>
-            <div className="relative">
-                <Swiper className="-mt-14 h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]" autoplay loop>
+            <section className="relative">
+                <Swiper className="-mt-14 h-[500px] lg:h-[600px] xl:h-[600px] 2xl:h-[700px]" modules={[Autoplay]} autoplay={{ delay: 3500 }} speed={900} loop={true}>
                     <SwiperSlide>
-                        <img className="h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px] w-full object-cover" src="/slide01.jpg" />
+                        <img className="h-[500px] lg:h-[600px] xl:h-[600px] 2xl:h-[700px] w-full object-cover" src="/slide01.jpg" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img className="h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px] w-full object-cover" src="/slide02.jpg" />
+                        <img className="h-[500px] lg:h-[600px] xl:h-[600px] 2xl:h-[700px] w-full object-cover" src="/slide02.jpg" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img className=" h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px] w-full object-cover" src="/slide03.jpg" />
+                        <img className=" h-[500px] lg:h-[600px] xl:h-[600px] 2xl:h-[700px] w-full object-cover" src="/slide03.jpg" />
                     </SwiperSlide>
 
                 </Swiper>
 
                 <div className="z-20 absolute top-1/2 md:w-1/2 origin-center transform md:translate-x-1/2">
-                    <h1 className='m-2 rounded-md text-center font-bold text-yellow-50 text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl backdrop-blur-sm'>Find your Perfect Office Space here!</h1>
-                    <div className="relative px-2 sm:px-10 md:px-10 lg:px-0">
+                    <h1 className='m-2 rounded-md text-center font-bold text-yellow-50 text-xl md:text-2xl lg:text-3xl xl:text-4xl bg-white/30 backdrop-opacity-10'>Find your Perfect Office Space here!</h1>
+                    <div className="relative text-gray-600 font-semibold text-xs sm:text-sm md:text-base px-2 sm:px-10 md:px-10 lg:px-0">
                         <SearchBox onChange={(e) => router.push(`coworking-space/${e.value}`)} />
                     </div>
                     <div className='mt-3 sm:mt-5 relative flex flex-wrap gap-2 lg:gap-4 justify-center opacity-90'>
@@ -49,7 +50,7 @@ function Hero() {
                         <p onClick={handleClick} className="home-page-navigation-pills">Commercial Spaces</p>
                     </div>
                 </div>
-            </div>
+            </section>
             <Transition appear show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-30" onClose={() => setIsOpen(false)}>
                     <Transition.Child

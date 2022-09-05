@@ -8,10 +8,11 @@
   "dependencies": {
     "@headlessui/react": "^1.6.4",
     "@heroicons/react": "^1.0.5",
-    "@sendgrid/mail": "^7.6.0",
+    "@tawk.to/tawk-messenger-react": "^2.0.1",
     "@uiball/loaders": "^1.2.6",
     "firebase": "^9.6.9",
     "formik": "^2.2.9",
+    "framer-motion": "^6.5.1",
     "lodash": "^4.17.21",
     "next": "latest",
     "nextjs-breadcrumbs": "^1.1.9",
