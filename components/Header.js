@@ -66,10 +66,10 @@ function Header({ homePage }) {
                         {
                             homePage ? (
                                 <div className="lg:inline-grid cursor-pointer text-2xl lg:text-3xl font-extrabold font-Rubik" >
-                                    <a onClick={() => scroll.scrollToTop()} className="">smartdaftar</a>
+                                    <p onClick={() => scroll.scrollToTop()} className="">smartdaftar</p>
                                 </div>) : (
                                 <div className="lg:inline-grid cursor-pointer text-2xl lg:text-3xl font-extrabold font-Rubik">
-                                    <Link href='/'><a className="">smartdaftar</a></Link>
+                                    <Link href='/'><p className="">smartdaftar</p></Link>
                                 </div>
                             )
                         }

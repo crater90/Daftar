@@ -9,7 +9,7 @@ import { getStorage } from 'firebase/storage'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-	apiKey: "AIzaSyDCxPcE-b3rgRPG2sY2VGkcLl_FiJ3cmtc",
+	apiKey: process.env.FIREBASE_KEY,
 	authDomain: "smart-daftar.firebaseapp.com",
 	projectId: "smart-daftar",
 	storageBucket: "smart-daftar.appspot.com",
