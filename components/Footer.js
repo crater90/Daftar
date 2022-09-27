@@ -584,12 +584,12 @@ function Footer() {
                     <h1 className="text-4xl font-extrabold font-Rubik text-yellow-50">smartdaftar</h1>
                     <p className="pt-5 text-sm text-yellow-50">Copyright © 2022.</p>
                     <p className="text-sm text-yellow-50">All rights reserved.</p>
-                    <h4 className="pt-5 text-sm text-yellow-50">Follow us on :</h4>
+                    <p className="pt-5 text-sm text-yellow-50">Follow us on :</p>
                     <div className="flex mt-2 gap-x-3 mb-3">
-                        <a className="flex items-center justify-center h-8 w-8 rounded-full bg-gray-500 text-yellow-50 cursor-pointer hover:bg-gray-100 hover:text-red-400"><FaFacebookF className="h-5" /></a>
-                        <a className="flex items-center justify-center h-8 w-8 rounded-full bg-gray-500 text-yellow-50 cursor-pointer hover:bg-gray-100 hover:text-red-400"><FaInstagram className="h-5" /></a>
-                        <a className="flex items-center justify-center h-8 w-8 rounded-full bg-gray-500 text-yellow-50 cursor-pointer hover:bg-gray-100 hover:text-red-400"><FaLinkedinIn className="h-5" /></a>
-                        <a className="flex items-center justify-center h-8 w-8 rounded-full bg-gray-500 text-yellow-50 cursor-pointer hover:bg-gray-100 hover:text-red-400"><FaTwitter className="h-5" /></a>
+                        <a href="/" className="flex items-center justify-center h-8 w-8 rounded-full bg-gray-500 text-yellow-50 cursor-pointer hover:bg-gray-100 hover:text-red-400"><FaFacebookF className="h-5" /></a>
+                        <a href="/" className="flex items-center justify-center h-8 w-8 rounded-full bg-gray-500 text-yellow-50 cursor-pointer hover:bg-gray-100 hover:text-red-400"><FaInstagram className="h-5" /></a>
+                        <a href="/" className="flex items-center justify-center h-8 w-8 rounded-full bg-gray-500 text-yellow-50 cursor-pointer hover:bg-gray-100 hover:text-red-400"><FaLinkedinIn className="h-5" /></a>
+                        <a href="/" className="flex items-center justify-center h-8 w-8 rounded-full bg-gray-500 text-yellow-50 cursor-pointer hover:bg-gray-100 hover:text-red-400"><FaTwitter className="h-5" /></a>
                     </div>
                 </div>
                 <div className="list-none">
