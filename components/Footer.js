@@ -616,7 +616,9 @@ function Footer() {
                 <div className="list-none">
                     <h1 className=" text-yellow-50 font-semibold">LOCATIONS</h1>
                     <div className="text-sm py-3 leading-8 text-gray-300">
-                        <Link href='/coworking-space/new-delhi'><li className='hover:underline underline-offset-1 cursor-pointer'>Delhi NCR</li></Link>
+                        <Link href='/coworking-space/new-delhi'><li className='hover:underline underline-offset-1 cursor-pointer'>Delhi</li></Link>
+                        <Link href='/coworking-space/noida'><li className='hover:underline underline-offset-1 cursor-pointer'>Noida</li></Link>
+                        <Link href='/coworking-space/gurgaon'><li className='hover:underline underline-offset-1 cursor-pointer'>Gurgaon</li></Link>
                         <Link href='/coworking-space/bangalore'><li className='hover:underline underline-offset-1 cursor-pointer'>Bangalore</li></Link>
                         <Link href='/coworking-space/hyderabad'><li className='hover:underline underline-offset-1 cursor-pointer'>Hyderabad</li></Link>
                         <Link href='/coworking-space/pune'><li className='hover:underline underline-offset-1 cursor-pointer'>Pune</li></Link>
@@ -666,7 +668,7 @@ function Footer() {
                     </Tab.Group>
                 }
             </div>
-            <div className="mt-10 flex items-center justify-center text-gray-300 text-sm">
+            <div className="mt-10 mb-14 md:mb-0 flex items-center justify-center text-gray-300 text-sm">
                 Created by<span className="text-red-400 pl-1 underline underline-offset-4 font-semibold"><a target='_blank' href="https://twitter.com/crater90">crater90</a></span>
             </div>
         </footer>
