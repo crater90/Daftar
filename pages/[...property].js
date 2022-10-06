@@ -349,7 +349,7 @@ function PropertyPage({ propertyData }) {
                     </div>
                 </div>
                 <Footer />
-                <div className="sticky border-t border-t-slate-300 md:hidden py-2 flex bottom-0 bg-white z-30 justify-center">
+                <div className="fixed w-screen border-t border-t-slate-300 md:hidden py-2 flex bottom-0 bg-white z-30 justify-center">
                     <button onClick={handleModal} className="font-semibold bg-red-400 hover:bg-white hover:text-red-400 border hover:border-red-400 text-white py-2 w-11/12 sm:w-3/4 rounded-md">Enquire Now</button>
                 </div>
                 <ModalForMobile ref={modelRef} city={propertyData.uniqueId} triggerAnimate={triggerAnimate} />
